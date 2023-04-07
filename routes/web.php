@@ -27,7 +27,13 @@ Route::prefix('admin')->group(function(){
     Route::Resource('admin',UserController::class);
 });
 
-// Route::prefix('admin')->middleware('checkUserRole')->group(function(){
-//     Route::Resource('/category',CategoryController::class);
-//     Route::Resource('/product',ProductController::class);
-// });
+Route::prefix('admin')->middleware('checkUserRole')->group(function(){
+    Route::Resource('/category',CategoryController::class);
+    Route::Resource('/product',ProductController::class);
+
+    
+    //this view haven't controller
+    Route::get('/dashboard',function(){
+        return view('admin/dashboard');
+    })->name('dashboard');
+});
