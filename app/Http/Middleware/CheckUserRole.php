@@ -14,7 +14,7 @@ class CheckUserRole
     {
         // Kiểm tra xem người dùng đã đăng nhập chưa
         if (!Auth::check()) {
-            return redirect('/login');
+            return redirect('/admin/login');
         }
         return $next($request);
     }
