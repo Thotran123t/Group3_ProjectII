@@ -277,9 +277,11 @@
                 height: 100%;
                 padding-bottom: 25px;
             }
-            .container{
+
+            .container {
                 height: 700px;
             }
+
             .overlay,
             .overlay-panel,
             .container.right-panel-active .overlay-left,
@@ -431,7 +433,7 @@
                     },
                     success: function(data) {
                         if (data == 'successfully') {
-                            alert('chờ sử lý trang dashboard');
+                            window.location.href = "{{ route('dashboard') }}";
                         } else {
                             $('#notification-checklogin').text('thông tin tài khoản hoặc mật khẩu không chính xác !');
                         }
@@ -449,7 +451,7 @@
                     type: 'post',
                     url: urlcreateaccount,
                     data: {
-                        name : name,
+                        name: name,
                         email: email,
                         password: password,
                         _token: '{{ csrf_token() }}'
