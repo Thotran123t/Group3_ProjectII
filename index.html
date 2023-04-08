@@ -64,7 +64,7 @@
 
         .sidebar .sidebar-menu .panel a {
             display: block;
-            color:black;
+            color: black;
             text-decoration: none;
             padding: 10px 5px 10px 20px;
         }
@@ -82,7 +82,8 @@
             width: 55px;
             text-align: center;
         }
-        .sidebar .sidebar-menu li span{
+
+        .sidebar .sidebar-menu li span {
             padding-left: 15px;
         }
 
@@ -197,9 +198,7 @@
                 <li><i class="fa-sharp fa-solid fa-house-user"></i>
                     <span>Dashboard</span>
                 </li>
-
-
-                <li class="accordion"><i class="fas fa-user-circle"></i>
+                <li class="accordion"><i class="fas fa-users-cog"></i>
                     <span>Admin</span>
                 </li>
                 <div class="panel">
@@ -232,7 +231,8 @@
                     <a href="">Empty</a>
                     <a href="">Empty</a>
                 </div>
-                <li class="accordion"><i class="fa-sharp fa-solid fa-folder-open"></i>
+                <li class="accordion"><i class="fa fa-sort"></i>
+
                     <span>Order</span>
                 </li>
                 <div class="panel">
@@ -330,6 +330,17 @@
 
         for (i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function () {
+                // đóng tất cả những class accordion khác
+                var accordions = document.getElementsByClassName("accordion");
+                for (var j = 0; j < accordions.length; j++) {
+                    if (accordions[j] !== this) {
+                        accordions[j].classList.remove("active");
+                        var panel = accordions[j].nextElementSibling;
+                        panel.style.maxHeight = null;
+                    }
+                }
+
+                // mở những thẻ a ra
                 this.classList.toggle("active");
                 var panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
@@ -339,6 +350,7 @@
                 }
             });
         }
+
     </script>
 </body>
 
