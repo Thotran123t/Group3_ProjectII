@@ -7,18 +7,291 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        h1 {
-            background-color: red;
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
         }
-        img{
-            width: 550px;
+
+        .sidebar {
+            width: 20%;
+            position: fixed;
+            height: 100%;
+            transition: .5s;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: 0 12px 30px rgba(80, 143, 244, .1);
+            overflow-y: auto;
+            scrollbar-width: 5px;
+        }
+
+        .sidebar::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background-color: #ffaa9b;
+            border-radius: 100rem;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background-color: #ffffff;
+            border-radius: 100rem;
+        }
+
+        .sidebar nav {
+            height: 100%;
+        }
+
+        .sidebar .brand_name {
+            height: 150px;
+        }
+
+        .sidebar ul[class="sidebar-menu"] {
+            list-style: none;
+            height: 100%;
+            padding: 0;
+        }
+
+        .sidebar ul .panel a {
+            display: block;
+            /* margin-left: 10px; */
+        }
+
+        .sidebar .sidebar-menu .panel {
+            max-height: 0px;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+
+        .main {
+            width: 80%;
+            float: right;
+            transition: .5s;
+            background-color: #eef1f3;
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+        /* STRUCTURE */
+
+        .main .wrapper {
+            padding: 5px;
+            max-width: 960px;
+            width: 95%;
+            margin: 20px auto;
+        }
+
+        .main header {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 15px;
+        }
+
+        .main .columns {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            margin: 25px 0;
+        }
+
+        .main .column {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+        }
+
+        .main .column:first-child {
+            margin-left: 0;
+        }
+
+        .main .column:last-child {
+            margin-right: 0;
+        }
+
+        .main footer {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 15px;
+        }
+
+        @media screen and (max-width: 980px) {
+            .sidebar {
+                width: 25%;
+            }
+
+            .main {
+                width: 75%;
+            }
+
+            .main.columns .column {
+                margin-bottom: 5px;
+                flex-basis: 40%;
+            }
+
+            .main .columns .column:nth-last-child(2) {
+                margin-right: 0;
+            }
+
+            .main .columns .column:last-child {
+                flex-basis: 100%;
+                margin: 0;
+            }
+        }
+
+        @media screen and (max-width: 720px) {
+            .sidebar{
+                display:none;
+            }
+            .main{
+                width: 100%;
+            }
+            .main .columns .column {
+                flex-basis: 100%;
+                margin: 0 0 5px 0;
+            }
+
+
         }
     </style>
 </head>
 
 <body>
-    <h1>hello asjdf askdfhskd hfsdkahf hsadfjkhsd khdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjkkhdsfjk </h1>
-    <!-- <img src="/public/images/myimg/admin/background-sidebar.jpg" alt=""> -->
+    <header class="sidebar">
+        <nav class="">
+            <div class="brand_name">IShopApple</div>
+            <ul class="sidebar-menu">
+                <li class="accordion"><i class="fa-sharp fa-solid fa-house-user"></i>Dashboard</li>
+                <li class="accordion"><i class="fa fa-product-hunt"></i>Product</li>
+                <div class="panel">
+                    <a href="">List Prouduct</a>
+                    <a href="">Create New Product</a>
+                </div>
+                <li class="accordion"><i class="fa-solid fa-user-large"></i>User</li>
+                <div class="panel">
+                    <a href="">List User</a>
+                    <a href="">Create New User</a>
+                </div>
+                <li class="accordion"><i class="fas fa-user-circle"></i>Admin</li>
+                <div class="panel">
+                    <a href="">List Admin</a>
+                    <a href="">Create New Admin</a>
+                </div>
+                <li class="accordion"><i class="fa-sharp fa-solid fa-folder-open"></i>Empty</li>
+                <div class="panel">
+                    <a href="">Empty</a>
+                    <a href="">Empty</a>
+                    <a href="">Empty</a>
+                </div>
+                <li class="accordion"><i class="fa-sharp fa-solid fa-folder-open"></i>Empty</li>
+                <div class="panel">
+                    <a href="">Empty</a>
+                    <a href="">Empty</a>
+                    <a href="">Empty</a>
+                </div>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <div class="wrapper">
+
+            <header>
+                <h1>3 Column Responsive Layout</h1>
+            </header>
+
+            <section class="columns">
+
+                <div class="column">
+                    <h2>1st Content Area</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
+                        cum praesentium dolor totam voluptatibus recusandae?</p>
+                </div>
+
+                <div class="column">
+                    <h2>2nd Content Area</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
+                        cum praesentium dolor totam voluptatibus recusandae? Illo quod nemo ratione itaque dolores
+                        laudantium error vero laborum blanditiis nostrum.</p>
+                </div>
+
+                <div class="column">
+                    <h2>3rd Content Area</h2>
+                    <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium
+                        voluptatibus recusandae?</p>
+                </div>
+
+            </section>
+
+            <footer>
+                <h3>Footer</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, porro. Doloribus vitae non dolores
+                    modi dolorum commodi perspiciatis dicta nostrum minus esse, totam officia, quibusdam amet quas
+                    tempora? Voluptatibus, esse.</p>
+            </footer>
+
+        </div>
+        <div class="wrapper">
+
+            <header>
+                <h1>3 Column Responsive Layout</h1>
+            </header>
+
+            <section class="columns">
+
+                <div class="column">
+                    <h2>1st Content Area</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
+                        cum praesentium dolor totam voluptatibus recusandae?</p>
+                </div>
+
+                <div class="column">
+                    <h2>2nd Content Area</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
+                        cum praesentium dolor totam voluptatibus recusandae? Illo quod nemo ratione itaque dolores
+                        laudantium error vero laborum blanditiis nostrum.</p>
+                </div>
+
+                <div class="column">
+                    <h2>3rd Content Area</h2>
+                    <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium
+                        voluptatibus recusandae?</p>
+                </div>
+
+            </section>
+
+            <footer>
+                <h3>Footer</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, porro. Doloribus vitae non dolores
+                    modi dolorum commodi perspiciatis dicta nostrum minus esse, totam officia, quibusdam amet quas
+                    tempora? Voluptatibus, esse.</p>
+            </footer>
+
+        </div>
+    </main>
+    <footer></footer>
+
+    <script src="https://kit.fontawesome.com/1aa4f49900.js" crossorigin="anonymous"></script>
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

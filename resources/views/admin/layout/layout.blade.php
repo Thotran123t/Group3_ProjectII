@@ -11,7 +11,7 @@
         <nav class="sidebar">
             <div class="brand_name">IShopApple</div>
             <ul class="sidebar-menu">
-                <li class="accordion"><i class="fa-sharp fa-solid fa-house-user"></i>Dashboard</li>
+                <li><i class="fa-sharp fa-solid fa-house-user"></i>Dashboard</li>
                 <li class="accordion"><i class="fa fa-product-hunt"></i>Product</li>
                 <div class="panel">
                     <a href="">List Prouduct</a>
