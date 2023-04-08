@@ -22,21 +22,20 @@
             background-color: #fff;
             box-shadow: 0 12px 30px rgba(80, 143, 244, .1);
             overflow-y: auto;
-            scrollbar-width: 5px;
         }
 
         .sidebar::-webkit-scrollbar {
-            width: 3px;
+            display: none;
         }
 
-        .sidebar::-webkit-scrollbar-thumb {
-            background-color: #ffaa9b;
-            border-radius: 100rem;
-        }
-
-        .sidebar::-webkit-scrollbar-track {
-            background-color: #ffffff;
-            border-radius: 100rem;
+        .sidebar .btn-collapser {
+            position: fixed;
+            top: 20px;
+            left: 240px;
+            font-size: 20px;
+            transition: .5s;
+            cursor: pointer;
+            user-select: none;
         }
 
         .sidebar nav {
@@ -66,7 +65,7 @@
             display: block;
             color: black;
             text-decoration: none;
-            padding: 10px 5px 10px 20px;
+            padding: 10px 5px 10px 35px;
         }
 
         .sidebar .sidebar-menu li {
@@ -94,10 +93,9 @@
             background-color: #eef1f3;
         }
 
-        @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
 
-        /* STRUCTURE */
+        /* main */
 
         .main .wrapper {
             padding: 5px;
@@ -141,20 +139,9 @@
             padding: 15px;
         }
 
+
+        /*responsive*/
         @media screen and (max-width: 980px) {
-            .sidebar {
-                width: 175px;
-            }
-
-            .sidebar .sidebar-menu li {
-                width: 175px;
-            }
-
-            .main {
-                width: calc(100% - 175px);
-            }
-
-            ;
 
             .main.columns .column {
                 margin-bottom: 5px;
@@ -184,8 +171,24 @@
                 flex-basis: 100%;
                 margin: 0 0 15px 0;
             }
+        }
 
+        /*add class*/
+        .btn_collapse_toggle {
+            left: 40px !important;
+            rotate: 180deg;
+        }
 
+        .main_toggle {
+            width: calc(100% - 50px);
+        }
+
+        .sidebar_toggle {
+            width: 50px;
+        }
+
+        .panel_toggle {
+            display: none;
         }
     </style>
 </head>
@@ -194,6 +197,7 @@
     <header class="sidebar">
         <nav class="">
             <div class="brand_name">IShopApple</div>
+            <a class="btn-collapser"><i class="fa-solid fa-circle-arrow-left"></i></a>
             <ul class="sidebar-menu">
                 <li><i class="fa-sharp fa-solid fa-house-user"></i>
                     <span>Dashboard</span>
@@ -325,23 +329,21 @@
 
     <script src="https://kit.fontawesome.com/1aa4f49900.js" crossorigin="anonymous"></script>
     <script>
+        ///////////////////////////////////////////////////////////////////Accordion
         var acc = document.getElementsByClassName("accordion");
-        var i;
-
-        for (i = 0; i < acc.length; i++) {
+        for (var i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function () {
                 // đóng tất cả những class accordion khác
                 var accordions = document.getElementsByClassName("accordion");
                 for (var j = 0; j < accordions.length; j++) {
                     if (accordions[j] !== this) {
-                        accordions[j].classList.remove("active");
+                        // accordions[j].classList.remove("active");
                         var panel = accordions[j].nextElementSibling;
                         panel.style.maxHeight = null;
                     }
                 }
-
                 // mở những thẻ a ra
-                this.classList.toggle("active");
+                // this.classList.toggle("active");
                 var panel = this.nextElementSibling;
                 if (panel.style.maxHeight) {
                     panel.style.maxHeight = null;
@@ -350,6 +352,22 @@
                 }
             });
         }
+        /////////////////////////////////////////////////////////////////collapser-sidebar
+        var sidebar = document.querySelector('.sidebar');
+        var main = document.querySelector('.main');
+        var btn_collapse = document.querySelector('.btn-collapser');
+        var panels = document.querySelectorAll('.panel');
+
+        btn_collapse.addEventListener('click', function () {
+            this.classList.toggle('btn_collapse_toggle');
+            sidebar.classList.toggle('sidebar_toggle');
+            main.classList.toggle('main_toggle');
+            for (var i = 0; i < panels.length; i++) {
+                panels[i].classList.toggle('panel_toggle');
+            }
+        });
+
+
 
     </script>
 </body>
