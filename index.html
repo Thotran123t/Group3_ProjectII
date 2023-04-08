@@ -64,6 +64,11 @@
             transition: max-height 0.2s ease-out;
         }
 
+        .sidebar .sidebar-menu li {
+            cursor: pointer;
+            user-select: none;
+        }
+
         .main {
             width: 80%;
             float: right;
@@ -143,12 +148,14 @@
         }
 
         @media screen and (max-width: 720px) {
-            .sidebar{
-                display:none;
+            .sidebar {
+                display: none;
             }
-            .main{
+
+            .main {
                 width: 100%;
             }
+
             .main .columns .column {
                 flex-basis: 100%;
                 margin: 0 0 5px 0;
@@ -164,29 +171,47 @@
         <nav class="">
             <div class="brand_name">IShopApple</div>
             <ul class="sidebar-menu">
-                <li class="accordion"><i class="fa-sharp fa-solid fa-house-user"></i>Dashboard</li>
-                <li class="accordion"><i class="fa fa-product-hunt"></i>Product</li>
-                <div class="panel">
-                    <a href="">List Prouduct</a>
-                    <a href="">Create New Product</a>
-                </div>
-                <li class="accordion"><i class="fa-solid fa-user-large"></i>User</li>
-                <div class="panel">
-                    <a href="">List User</a>
-                    <a href="">Create New User</a>
-                </div>
-                <li class="accordion"><i class="fas fa-user-circle"></i>Admin</li>
+                <li><i class="fa-sharp fa-solid fa-house-user"></i>
+                    <span>Dashboard</span> 
+                </li>
+
+
+                <li class="accordion"><i class="fas fa-user-circle"></i>
+                    <span>Admin</span> 
+                </li>
                 <div class="panel">
                     <a href="">List Admin</a>
                     <a href="">Create New Admin</a>
                 </div>
-                <li class="accordion"><i class="fa-sharp fa-solid fa-folder-open"></i>Empty</li>
+
+                <li class="accordion"><i class="fa-solid fa-user-large"></i>
+                    <span>User</span> 
+                </li>
+                <div class="panel">
+                    <a href="">List User</a>
+                    <a href="">Create New User</a>
+                </div>
+
+                <li class="accordion"><i class="fa fa-product-hunt"></i>
+                    <span>Product</span>
+                </li>
+                <div class="panel">
+                    <a href="">List Prouduct</a>
+                    <a href="">Create New Product</a>
+                </div>
+
+
+                <li class="accordion"><i class="fa-sharp fa-solid fa-folder-open"></i>
+                    <span>Category</span> 
+                </li>
                 <div class="panel">
                     <a href="">Empty</a>
                     <a href="">Empty</a>
                     <a href="">Empty</a>
                 </div>
-                <li class="accordion"><i class="fa-sharp fa-solid fa-folder-open"></i>Empty</li>
+                <li class="accordion"><i class="fa-sharp fa-solid fa-folder-open"></i>
+                    <span>Order</span> 
+                </li>
                 <div class="panel">
                     <a href="">Empty</a>
                     <a href="">Empty</a>
