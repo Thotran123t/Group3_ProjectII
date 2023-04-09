@@ -13,6 +13,8 @@
             font-family: 'Open Sans', sans-serif;
         }
 
+
+        /*sidebar*/
         .sidebar {
             width: 275px;
             position: fixed;
@@ -82,7 +84,6 @@
             margin-top: 175px;
         }
 
-
         .sidebar .sidebar-menu .panel {
             max-height: 0px;
             overflow: hidden;
@@ -118,6 +119,9 @@
             padding-left: 15px;
         }
 
+
+        /* main */
+
         .main {
             width: calc(100% - 275px);
             float: right;
@@ -125,10 +129,6 @@
             background-color: #eef1f3;
             padding-top: 100px;
         }
-
-
-
-        /* main */
 
         .main .tab_header {
             position: fixed;
@@ -138,7 +138,42 @@
             height: 75px;
             background-color: #fff;
             transition: .3s;
+            align-items: center;
+            justify-content: space-evenly;
+            display: flex;
         }
+
+        .main .tab_header .input_search{
+            width: 50%;
+            position:relative;
+        }
+        .main .tab_header .input_search input {
+            font-size: 15px;
+            width: 100%;
+            height: 35px;
+            border-radius: 18px;
+            outline: none;
+            padding: 0 45px 0 20px;
+            border: 1px solid gray;
+        }
+        .main .tab_header .input_search i{
+            position: absolute;
+            right: 16px;
+            top: 8px;
+            font-size: 19px;
+        }
+        .main .tab_header .option > *{
+            font-size:20px;
+            padding:0 10px;
+            color: black;
+        }
+
+        .main .tab_header .menu_icon {
+            font-size: 25px;
+            display: none;
+        }
+
+      
 
         .main .wrapper {
             padding: 5px;
@@ -190,6 +225,10 @@
                 flex-basis: 40%;
             }
 
+            .main .tab_header .option a:nth-of-type(-n+3) {
+                display: none;
+            }
+
             .main .columns .column:nth-last-child(2) {
                 margin-right: 0;
             }
@@ -201,18 +240,34 @@
         }
 
         @media screen and (max-width: 720px) {
-            .sidebar {
+            body .sidebar {
+                left: -100%;
+            }
+
+            .sidebar .btn_collapser {
                 display: none;
             }
 
-            .main {
-                width: 100%;
+            body .main,
+            body .main .tab_header {
+                width: 100% !important;
             }
 
             .main .columns .column {
                 flex-basis: 100%;
                 margin: 0 0 15px 0;
             }
+
+
+
+            
+            .main .tab_header .menu_icon {
+                display: block;
+            }
+            .main .tab_header .logo_brand{
+                display: none;
+            }
+
         }
 
         /*add class*/
@@ -233,7 +288,8 @@
             rotate: 180deg;
         }
 
-        .main_sidebar , .tab_header_sidebar {
+        .main_sidebar,
+        .tab_header_sidebar {
             width: calc(100% - 65px) !important;
         }
 
@@ -250,7 +306,11 @@
         .header_sidebar_sidebar {
             width: 65px !important;
         }
-            
+        /*menu-icon*/
+        .sidebar_menu_icon{
+            left: 0;
+        }
+
     </style>
 </head>
 
@@ -318,7 +378,21 @@
     <main class="main">
 
         <div class="tab_header">
-
+            <a class="logo_brand" href=""><img src="" alt="" width="50px" height="50px"></a>
+            <i class="menu_icon fa-solid fa-bars"> 
+             
+            </i>
+            <div class="input_search">
+                <input  type="text" placeholder="Search ...">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+            <div class="option">
+                <a href=""><i class="fa-sharp fa-solid fa-language"></i></a>
+                <a href=""><i class="fa-sharp fa-solid fa-message"></i></a>
+                <a href=""><i class="fa-solid fa-bell"></i></a>
+                <a href=""><i class="fa-sharp fa-solid fa-gear"></i></a>
+            </div>
+            
         </div>
 
 
@@ -405,7 +479,7 @@
 
     <footer></footer>
 
-    <script src="https://kit.fontawesome.com/1aa4f49900.js" crossorigin="anonymous"></script>
+    <script src="/public/js/1aa4f49900.js" crossorigin="anonymous"></script>
     <script>
         ///////////////////////////////////////////////////////////////////Accordion
         var acc = document.getElementsByClassName("accordion");
@@ -463,10 +537,16 @@
                     panels[i].style.display = 'none';
                 }
             }
-
             main.classList.toggle('main_sidebar');
             tab_header.classList.toggle('tab_header_sidebar');
 
+        });
+
+        ////////////////////////////////////////////////////////////////menu-icon
+        var menu_icon= document.querySelector('.menu_icon');
+        menu_icon.addEventListener('click', function () {
+            
+            sidebar.classList.add('sidebar_menu_icon');
         });
 
 
