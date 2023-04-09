@@ -14,10 +14,10 @@
         }
 
         .sidebar {
-            width: 250px;
+            width: 275px;
             position: fixed;
             height: 100%;
-            transition: .5s;
+            transition: .3s;
             overflow: hidden;
             background-color: #fff;
             box-shadow: 0 12px 30px rgba(80, 143, 244, .1);
@@ -31,9 +31,9 @@
         .sidebar .btn-collapser {
             position: fixed;
             top: 20px;
-            left: 240px;
+            left: 265px;
             font-size: 20px;
-            transition: .5s;
+            transition: .3s;
             cursor: pointer;
             user-select: none;
         }
@@ -42,14 +42,43 @@
             height: 100%;
         }
 
-        .sidebar .brand_name {
+        .sidebar .header_sidebar {
+            position: fixed;
             height: 150px;
+            width: 275px;
+            top: 0;
+            background: url(/public/images/myimg/admin/background-sidebar.jpg);
+            background-position: center;
+            background-size: cover;
+            transition: .3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .sidebar .name_user {
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .sidebar .logo_user {
+            width: 75px;
+            height: 75px;
+            border-radius: 50%;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .sidebar .header_sidebar span {
+            padding: 10px 0;
+            text-align: center;
         }
 
         .sidebar ul[class="sidebar-menu"] {
             list-style: none;
             height: 100%;
             padding: 0;
+            margin-top: 175px;
         }
 
 
@@ -58,7 +87,7 @@
             overflow: hidden;
             transition: max-height 0.2s ease-out;
             background-color: #eef1f3;
-            padding: 0 15px 0 35px;
+            padding: 0 15px 0 45px;
         }
 
         .sidebar .sidebar-menu .panel a {
@@ -66,6 +95,7 @@
             color: black;
             text-decoration: none;
             padding: 10px 5px 10px 35px;
+            white-space: nowrap;
         }
 
         .sidebar .sidebar-menu li {
@@ -74,7 +104,7 @@
             align-items: center;
             display: flex;
             height: 45px;
-            width: 250px;
+            width: 275px;
         }
 
         .sidebar .sidebar-menu li i {
@@ -88,9 +118,9 @@
         }
 
         .main {
-            width: calc(100% - 250px);
+            width: calc(100% - 275px);
             float: right;
-            transition: .5s;
+            transition: .3s;
             background-color: #eef1f3;
         }
 
@@ -100,7 +130,6 @@
 
         .main .wrapper {
             padding: 5px;
-            max-width: 960px;
             width: 95%;
             margin: 20px auto;
         }
@@ -175,29 +204,54 @@
         }
 
         /*add class*/
-        .btn_collapse_toggle {
+        /*Accordion*/
+
+        /*collapser-sidebar*/
+        .logo_user_sidebar {
+            width: 50px !important;
+            height: 50px !important;
+
+        }
+
+        .name_user_sidebar {
+            display: none;
+        }
+
+        .btn_collapse_sidebar {
             left: 55px !important;
             rotate: 180deg;
         }
 
-        .main_toggle {
+        .main_sidebar {
             width: calc(100% - 65px);
         }
 
-        .sidebar_toggle {
+        .sidebar_sidebar {
             width: 65px;
         }
 
-        .panel_toggle {
-            display: none;
+        .panel_sidebar {
+            position: fixed;
+            left: 65px;
+            margin-top: -50px;
         }
+
+        .header_sidebar_sidebar {
+            width: 65px !important;
+        }
+
+        /**/
+        
     </style>
 </head>
 
 <body>
     <header class="sidebar">
         <nav class="">
-            <div class="brand_name">IShopApple</div>
+            <div class="header_sidebar">
+                <img class="logo_user" src="/public/images/myimg/admin/background-sidebar.jpg" alt="">
+                <span class="name_user">Nguyen Hoang An</span>
+            </div>
             <a class="btn-collapser"><i class="fa-solid fa-circle-arrow-left"></i></a>
             <ul class="sidebar-menu">
                 <li><i class="fa-sharp fa-solid fa-house-user"></i>
@@ -347,34 +401,44 @@
                 // this.classList.toggle("active");
                 var panel = this.nextElementSibling;
                 var panelStyle = window.getComputedStyle(panel);
-
-
-                // console.log(panelStyle.getPropertyValue('display'));
                 if (panelStyle.getPropertyValue('display') == 'none') {
-                    alert('hah');
-                }
-
-                else {
+                    panel.style.display = 'block';
                     if (panel.style.maxHeight) {
                         panel.style.maxHeight = null;
                     } else {
                         panel.style.maxHeight = panel.scrollHeight + "px";
                     }
                 }
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
             });
         }
         /////////////////////////////////////////////////////////////////collapser-sidebar
         var sidebar = document.querySelector('.sidebar');
+        var header_sidebar = document.querySelector('.header_sidebar');
+        var logo_user = document.querySelector('.logo_user');
+        var name_user = document.querySelector('.name_user');
+
+
         var main = document.querySelector('.main');
         var btn_collapse = document.querySelector('.btn-collapser');
         var panels = document.querySelectorAll('.panel');
 
         btn_collapse.addEventListener('click', function () {
-            this.classList.toggle('btn_collapse_toggle');
-            sidebar.classList.toggle('sidebar_toggle');
-            main.classList.toggle('main_toggle');
+            this.classList.toggle('btn_collapse_sidebar');
+            logo_user.classList.toggle('logo_user_sidebar');
+            name_user.classList.toggle('name_user_sidebar');
+            sidebar.classList.toggle('sidebar_sidebar');
+            main.classList.toggle('main_sidebar');
+            header_sidebar.classList.toggle('header_sidebar_sidebar');
             for (var i = 0; i < panels.length; i++) {
-                panels[i].classList.toggle('panel_toggle');
+                panels[i].classList.toggle('panel_sidebar');
+                if (panels[i].style.maxHeight) {
+                    panels[i].style.display = 'none';
+                }
             }
         });
 
