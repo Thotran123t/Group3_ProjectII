@@ -22,13 +22,14 @@
             background-color: #fff;
             box-shadow: 0 12px 30px rgba(80, 143, 244, .1);
             overflow-y: auto;
+            z-index: 1;
         }
 
         .sidebar::-webkit-scrollbar {
             display: none;
         }
 
-        .sidebar .btn-collapser {
+        .sidebar .btn_collapser {
             position: fixed;
             top: 20px;
             left: 265px;
@@ -122,11 +123,22 @@
             float: right;
             transition: .3s;
             background-color: #eef1f3;
+            padding-top: 100px;
         }
 
 
 
         /* main */
+
+        .main .tab_header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: calc(100% - 275px);
+            height: 75px;
+            background-color: #fff;
+            transition: .3s;
+        }
 
         .main .wrapper {
             padding: 5px;
@@ -217,13 +229,13 @@
             display: none;
         }
 
-        .btn_collapse_sidebar {
+        .btn_collapser_sidebar {
             left: 55px !important;
             rotate: 180deg;
         }
 
-        .main_sidebar {
-            width: calc(100% - 65px);
+        .main_sidebar , .tab_header_sidebar {
+            width: calc(100% - 65px) !important;
         }
 
         .sidebar_sidebar {
@@ -239,20 +251,22 @@
         .header_sidebar_sidebar {
             width: 65px !important;
         }
+            
 
         /**/
-        
     </style>
 </head>
 
 <body>
+
+
     <header class="sidebar">
         <nav class="">
             <div class="header_sidebar">
                 <img class="logo_user" src="/public/images/myimg/admin/background-sidebar.jpg" alt="">
                 <span class="name_user">Nguyen Hoang An</span>
             </div>
-            <a class="btn-collapser"><i class="fa-solid fa-circle-arrow-left"></i></a>
+            <a class="btn_collapser"><i class="fa-solid fa-circle-arrow-left"></i></a>
             <ul class="sidebar-menu">
                 <li><i class="fa-sharp fa-solid fa-house-user"></i>
                     <span>Dashboard</span>
@@ -302,7 +316,53 @@
             </ul>
         </nav>
     </header>
+
+
     <main class="main">
+
+        <div class="tab_header">
+
+        </div>
+
+
+        <div class="wrapper">
+            <header>
+                <h1>3 Column Responsive Layout</h1>
+            </header>
+
+            <section class="columns">
+
+                <div class="column">
+                    <h2>1st Content Area</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
+                        cum praesentium dolor totam voluptatibus recusandae?</p>
+                </div>
+
+                <div class="column">
+                    <h2>2nd Content Area</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
+                        cum praesentium dolor totam voluptatibus recusandae? Illo quod nemo ratione itaque dolores
+                        laudantium error vero laborum blanditiis nostrum.</p>
+                </div>
+
+                <div class="column">
+                    <h2>3rd Content Area</h2>
+                    <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem
+                        ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium
+                        voluptatibus recusandae?</p>
+                </div>
+
+            </section>
+
+            <footer>
+                <h3>Footer</h3>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, porro. Doloribus vitae non dolores
+                    modi dolorum commodi perspiciatis dicta nostrum minus esse, totam officia, quibusdam amet quas
+                    tempora? Voluptatibus, esse.</p>
+            </footer>
+
+        </div>
+
         <div class="wrapper">
 
             <header>
@@ -341,45 +401,11 @@
             </footer>
 
         </div>
-        <div class="wrapper">
 
-            <header>
-                <h1>3 Column Responsive Layout</h1>
-            </header>
 
-            <section class="columns">
-
-                <div class="column">
-                    <h2>1st Content Area</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
-                        cum praesentium dolor totam voluptatibus recusandae?</p>
-                </div>
-
-                <div class="column">
-                    <h2>2nd Content Area</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
-                        cum praesentium dolor totam voluptatibus recusandae? Illo quod nemo ratione itaque dolores
-                        laudantium error vero laborum blanditiis nostrum.</p>
-                </div>
-
-                <div class="column">
-                    <h2>3rd Content Area</h2>
-                    <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem
-                        ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium
-                        voluptatibus recusandae?</p>
-                </div>
-
-            </section>
-
-            <footer>
-                <h3>Footer</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, porro. Doloribus vitae non dolores
-                    modi dolorum commodi perspiciatis dicta nostrum minus esse, totam officia, quibusdam amet quas
-                    tempora? Voluptatibus, esse.</p>
-            </footer>
-
-        </div>
     </main>
+
+
     <footer></footer>
 
     <script src="https://kit.fontawesome.com/1aa4f49900.js" crossorigin="anonymous"></script>
@@ -421,18 +447,18 @@
         var header_sidebar = document.querySelector('.header_sidebar');
         var logo_user = document.querySelector('.logo_user');
         var name_user = document.querySelector('.name_user');
-
-
-        var main = document.querySelector('.main');
-        var btn_collapse = document.querySelector('.btn-collapser');
+        var btn_collapser = document.querySelector('.btn_collapser');
         var panels = document.querySelectorAll('.panel');
 
-        btn_collapse.addEventListener('click', function () {
-            this.classList.toggle('btn_collapse_sidebar');
+        var main = document.querySelector('.main');
+        var tab_header = document.querySelector('.tab_header');
+
+
+        btn_collapser.addEventListener('click', function () {
             logo_user.classList.toggle('logo_user_sidebar');
             name_user.classList.toggle('name_user_sidebar');
             sidebar.classList.toggle('sidebar_sidebar');
-            main.classList.toggle('main_sidebar');
+            this.classList.toggle('btn_collapser_sidebar');
             header_sidebar.classList.toggle('header_sidebar_sidebar');
             for (var i = 0; i < panels.length; i++) {
                 panels[i].classList.toggle('panel_sidebar');
@@ -440,6 +466,10 @@
                     panels[i].style.display = 'none';
                 }
             }
+
+            main.classList.toggle('main_sidebar');
+            tab_header.classList.toggle('tab_header_sidebar');
+
         });
 
 
