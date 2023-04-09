@@ -73,12 +73,13 @@
             user-select: none;
             align-items: center;
             display: flex;
-            height: 40px;
+            height: 45px;
             width: 250px;
         }
 
         .sidebar .sidebar-menu li i {
-            width: 55px;
+            font-size: 18px;
+            width: 65px;
             text-align: center;
         }
 
@@ -175,16 +176,16 @@
 
         /*add class*/
         .btn_collapse_toggle {
-            left: 40px !important;
+            left: 55px !important;
             rotate: 180deg;
         }
 
         .main_toggle {
-            width: calc(100% - 50px);
+            width: calc(100% - 65px);
         }
 
         .sidebar_toggle {
-            width: 50px;
+            width: 65px;
         }
 
         .panel_toggle {
@@ -345,10 +346,20 @@
                 // mở những thẻ a ra
                 // this.classList.toggle("active");
                 var panel = this.nextElementSibling;
-                if (panel.style.maxHeight) {
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
+                var panelStyle = window.getComputedStyle(panel);
+
+
+                // console.log(panelStyle.getPropertyValue('display'));
+                if (panelStyle.getPropertyValue('display') == 'none') {
+                    alert('hah');
+                }
+
+                else {
+                    if (panel.style.maxHeight) {
+                        panel.style.maxHeight = null;
+                    } else {
+                        panel.style.maxHeight = panel.scrollHeight + "px";
+                    }
                 }
             });
         }
