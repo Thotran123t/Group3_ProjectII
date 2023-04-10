@@ -5,6 +5,9 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Auth;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,7 +36,9 @@ Route::prefix('admin')->middleware('checkUserRole')->group(function(){
 
     
     //this view haven't controller
-    Route::get('/dashboard',function(){
-        return view('admin/dashboard');
+    Route::get('/dashboard', function () {
+        $auth = Auth::user();
+        return view('admin.dashboard', ['auth' => $auth]);
     })->name('dashboard');
+    
 });

@@ -40,9 +40,19 @@
             cursor: pointer;
             user-select: none;
         }
+        .sidebar .menu_icon_close{
+            position: absolute;
+            cursor: pointer;
+            user-select: none;
+            top: 10px;
+            left: 10px;
+
+        }
 
         .sidebar nav {
             height: 100%;
+            padding-top:175px;
+            position: relative;
         }
 
         .sidebar .header_sidebar {
@@ -81,7 +91,6 @@
             list-style: none;
             height: 100%;
             padding: 0;
-            margin-top: 175px;
         }
 
         .sidebar .sidebar-menu .panel {
@@ -143,10 +152,11 @@
             display: flex;
         }
 
-        .main .tab_header .input_search{
+        .main .tab_header .input_search {
             width: 50%;
-            position:relative;
+            position: relative;
         }
+
         .main .tab_header .input_search input {
             font-size: 15px;
             width: 100%;
@@ -156,24 +166,25 @@
             padding: 0 45px 0 20px;
             border: 1px solid gray;
         }
-        .main .tab_header .input_search i{
+
+        .main .tab_header .input_search i {
             position: absolute;
             right: 16px;
             top: 8px;
             font-size: 19px;
         }
-        .main .tab_header .option > *{
-            font-size:20px;
-            padding:0 10px;
+
+        .main .tab_header .option>* {
+            font-size: 20px;
+            padding: 0 10px;
             color: black;
         }
 
-        .main .tab_header .menu_icon {
+        .main .tab_header .menu_icon_open , .sidebar .menu_icon_close {
             font-size: 25px;
             display: none;
         }
 
-      
 
         .main .wrapper {
             padding: 5px;
@@ -240,7 +251,7 @@
         }
 
         @media screen and (max-width: 720px) {
-            body .sidebar {
+            .sidebar {
                 left: -100%;
             }
 
@@ -258,13 +269,11 @@
                 margin: 0 0 15px 0;
             }
 
-
-
-            
-            .main .tab_header .menu_icon {
+            .main .tab_header .menu_icon_open , .sidebar .menu_icon_close{
                 display: block;
             }
-            .main .tab_header .logo_brand{
+
+            .main .tab_header .logo_brand {
                 display: none;
             }
 
@@ -306,11 +315,11 @@
         .header_sidebar_sidebar {
             width: 65px !important;
         }
+
         /*menu-icon*/
-        .sidebar_menu_icon{
+        .sidebar_menu_icon_open {
             left: 0;
         }
-
     </style>
 </head>
 
@@ -323,7 +332,8 @@
                 <img class="logo_user" src="/public/images/myimg/admin/background-sidebar.jpg" alt="">
                 <span class="name_user">Nguyen Hoang An</span>
             </div>
-            <a class="btn_collapser"><i class="fa-solid fa-circle-arrow-left"></i></a>
+            <i class="btn_collapser fa-solid fa-circle-arrow-left"></i>
+            <i class="menu_icon_close fa-solid fa-xmark"></i>
             <ul class="sidebar-menu">
                 <li><i class="fa-sharp fa-solid fa-house-user"></i>
                     <span>Dashboard</span>
@@ -379,11 +389,9 @@
 
         <div class="tab_header">
             <a class="logo_brand" href=""><img src="" alt="" width="50px" height="50px"></a>
-            <i class="menu_icon fa-solid fa-bars"> 
-             
-            </i>
+            <i class="menu_icon_open fa-solid fa-bars"></i>
             <div class="input_search">
-                <input  type="text" placeholder="Search ...">
+                <input type="text" placeholder="Search ...">
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <div class="option">
@@ -392,7 +400,7 @@
                 <a href=""><i class="fa-solid fa-bell"></i></a>
                 <a href=""><i class="fa-sharp fa-solid fa-gear"></i></a>
             </div>
-            
+
         </div>
 
 
@@ -524,7 +532,6 @@
         var main = document.querySelector('.main');
         var tab_header = document.querySelector('.tab_header');
 
-
         btn_collapser.addEventListener('click', function () {
             logo_user.classList.toggle('logo_user_sidebar');
             name_user.classList.toggle('name_user_sidebar');
@@ -543,11 +550,38 @@
         });
 
         ////////////////////////////////////////////////////////////////menu-icon
-        var menu_icon= document.querySelector('.menu_icon');
-        menu_icon.addEventListener('click', function () {
-            
-            sidebar.classList.add('sidebar_menu_icon');
+        var menu_icon_open = document.querySelector('.menu_icon_open');
+        menu_icon_open.addEventListener('click', function () {
+            sidebar.classList.add('sidebar_menu_icon_open');
         });
+        var menu_icon_close = document.querySelector('.menu_icon_close');
+        menu_icon_close.addEventListener('click', function () {
+            sidebar.classList.remove('sidebar_menu_icon_open');
+        });
+
+
+        function toggleHeaderClass() {
+            if (window.innerWidth > 720) {
+                sidebar.classList.remove('sidebar_menu_icon_open');
+                main.classList.remove('main_sidebar');
+                tab_header.classList.remove('tab_header_sidebar');
+            }
+            else{
+                for (var i = 0; i < panels.length; i++) {
+                panels[i].classList.remove('panel_sidebar');
+                    if (panels[i].style.maxHeight) {
+                        panels[i].style.display = 'none';
+                    }
+                }
+                logo_user.classList.remove('logo_user_sidebar');
+                name_user.classList.remove('name_user_sidebar');
+                sidebar.classList.remove('sidebar_sidebar');
+                btn_collapser.classList.remove('btn_collapser_sidebar');
+                header_sidebar.classList.remove('header_sidebar_sidebar');
+            }
+        }
+        window.addEventListener('resize', toggleHeaderClass);
+        toggleHeaderClass();
 
 
 
