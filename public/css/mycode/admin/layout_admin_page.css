@@ -4,6 +4,10 @@
     font-family: 'Open Sans', sans-serif;
 }
 
+body{
+    height: 100vh;
+    background-color: #eef1f3;
+}
 
 /*sidebar*/
 .sidebar {
@@ -126,21 +130,33 @@
     width: calc(100% - 275px);
     float: right;
     transition: .3s;
+    padding-top: 110px;
+    height: 100%;
+}
+
+.main::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 110px;
     background-color: #eef1f3;
-    padding-top: 100px;
+    z-index: 0;
 }
 
 .main .tab_header {
+    border-radius: 5px;
     position: fixed;
-    top: 0;
-    right: 0;
-    width: calc(100% - 275px);
+    top: 16px;
+    right: 27px;
+    width: calc(100% - 327px);
     height: 75px;
     background-color: #fff;
     transition: .3s;
     align-items: center;
     justify-content: space-evenly;
     display: flex;
+    z-index: 1;
 }
 
 .main .tab_header .input_search {
@@ -165,10 +181,30 @@
     font-size: 19px;
 }
 
-.main .tab_header .option>* {
+.main .tab_header .option{
+    position: relative;
+}
+.main .tab_header .option> i{
     font-size: 20px;
     padding: 0 10px;
+}
+
+.main .tab_header .option> div{
+    position: absolute;
+    right: -16%;
+    top: 45px;
+    border: 1px solid #eef1f3;
+    border-radius: 9px;
+    background-color: #eef1f3;
+    display: none;
+}
+
+.main .tab_header .option div a{
+    display: block;
+    padding: 10px 35px;
+    text-decoration: none;
     color: black;
+    white-space: nowrap;
 }
 
 .main .tab_header .menu_icon_open , .sidebar .menu_icon_close {
@@ -186,7 +222,10 @@
 
 /*responsive*/
 @media screen and (max-width: 980px) {
-    .main .tab_header .option a:nth-of-type(-n+3) {
+    .main .tab_header .option> div{
+        right: -70%;
+    }
+    .main .tab_header .option i:nth-of-type(-n+3) {
         display: none;
     }
 }
@@ -200,9 +239,11 @@
         display: none;
     }
 
-    body .main,
-    body .main .tab_header {
+    body .main{
         width: 100% !important;
+    }
+    body .main .tab_header {
+        width: calc(100% - 55px) !important;
     }
 
     .main .tab_header .menu_icon_open , .sidebar .menu_icon_close{
@@ -233,9 +274,11 @@
     rotate: 180deg;
 }
 
-.main_sidebar,
-.tab_header_sidebar {
+.main_sidebar{
     width: calc(100% - 65px) !important;
+}
+.tab_header_sidebar{
+    width: calc(100% - 124px) !important;
 }
 
 .sidebar_sidebar {
@@ -255,4 +298,8 @@
 /*menu-icon*/
 .sidebar_menu_icon_open {
     left: 0;
+}
+/*setting_account*/
+.account_setting_setting_account{
+    display: block !important;
 }

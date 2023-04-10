@@ -13,7 +13,11 @@
             font-family: 'Open Sans', sans-serif;
         }
 
+        body{
+            height: 100vh;
+            background-color: #eef1f3;
 
+        }
         /*sidebar*/
         .sidebar {
             width: 275px;
@@ -26,7 +30,7 @@
             overflow-y: auto;
             z-index: 1;
         }
-
+    
         .sidebar::-webkit-scrollbar {
             display: none;
         }
@@ -135,22 +139,35 @@
             width: calc(100% - 275px);
             float: right;
             transition: .3s;
+            padding-top: 110px;
+            height: 100%;
+
+        }
+        .main::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 110px;
             background-color: #eef1f3;
-            padding-top: 100px;
+            z-index: 0;
         }
 
         .main .tab_header {
+            border-radius: 5px;
             position: fixed;
-            top: 0;
-            right: 0;
-            width: calc(100% - 275px);
+            top: 16px;
+            right: 27px;
+            width: calc(100% - 327px);
             height: 75px;
             background-color: #fff;
             transition: .3s;
             align-items: center;
             justify-content: space-evenly;
             display: flex;
+            z-index: 1;
         }
+        
 
         .main .tab_header .input_search {
             width: 50%;
@@ -174,10 +191,30 @@
             font-size: 19px;
         }
 
-        .main .tab_header .option>* {
+        .main .tab_header .option{
+            position: relative;
+        }
+        .main .tab_header .option> i{
             font-size: 20px;
             padding: 0 10px;
+        }
+
+        .main .tab_header .option> div{
+            position: absolute;
+            right: -16%;
+            top: 45px;
+            border: 1px solid #eef1f3;
+            border-radius: 9px;
+            background-color: #eef1f3;
+            display: none;
+        }
+
+        .main .tab_header .option div a{
+            display: block;
+            padding: 10px 35px;
+            text-decoration: none;
             color: black;
+            white-space: nowrap;
         }
 
         .main .tab_header .menu_icon_open , .sidebar .menu_icon_close {
@@ -236,7 +273,10 @@
                 flex-basis: 40%;
             }
 
-            .main .tab_header .option a:nth-of-type(-n+3) {
+            .main .tab_header .option> div{
+                right: -70%;
+            }
+            .main .tab_header .option i:nth-of-type(-n+3) {
                 display: none;
             }
 
@@ -259,9 +299,11 @@
                 display: none;
             }
 
-            body .main,
-            body .main .tab_header {
+            body .main{
                 width: 100% !important;
+            }
+            body .main .tab_header {
+                width: calc(100% - 55px) !important;
             }
 
             .main .columns .column {
@@ -297,9 +339,11 @@
             rotate: 180deg;
         }
 
-        .main_sidebar,
-        .tab_header_sidebar {
+        .main_sidebar{
             width: calc(100% - 65px) !important;
+        }
+        .tab_header_sidebar{
+            width: calc(100% - 124px) !important;
         }
 
         .sidebar_sidebar {
@@ -319,6 +363,11 @@
         /*menu-icon*/
         .sidebar_menu_icon_open {
             left: 0;
+        }
+
+        /*setting_account*/
+        .account_setting_setting_account{
+            display: block !important;
         }
     </style>
 </head>
@@ -395,16 +444,20 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <div class="option">
-                <a href=""><i class="fa-sharp fa-solid fa-language"></i></a>
-                <a href=""><i class="fa-sharp fa-solid fa-message"></i></a>
-                <a href=""><i class="fa-solid fa-bell"></i></a>
-                <a href=""><i class="fa-sharp fa-solid fa-gear"></i></a>
+                <i class="fa-sharp fa-solid fa-language"></i>
+                <i class="fa-sharp fa-solid fa-message"></i>
+                <i class="fa-solid fa-bell"></i>
+                <i class="setting_account fa-sharp fa-solid fa-gear"></i>
+                <div class="account_setting">
+                    <a href="">Edit</a>
+                    <a href="">Log Out</a>
+                </div>
             </div>
 
         </div>
 
 
-        <div class="wrapper">
+        <!-- <div class="wrapper">
             <header>
                 <h1>3 Column Responsive Layout</h1>
             </header>
@@ -479,15 +532,19 @@
                     tempora? Voluptatibus, esse.</p>
             </footer>
 
-        </div>
+        </div> -->
 
+
+        <section class="profile"><div>helo</div></section>
+        <section class="update"></section>
+        <section class="delete"></section>
 
     </main>
 
 
     <footer></footer>
 
-    <script src="/public/js/1aa4f49900.js" crossorigin="anonymous"></script>
+    <script src="/public/js/mycode/1aa4f49900.js" crossorigin="anonymous"></script>
     <script>
         ///////////////////////////////////////////////////////////////////Accordion
         var acc = document.getElementsByClassName("accordion");
@@ -582,7 +639,12 @@
         }
         window.addEventListener('resize', toggleHeaderClass);
         toggleHeaderClass();
-
+        //////////////////////////////////////////////////////////////////////setting_account
+        var setting_account = document.querySelector('.setting_account');
+        var account_setting = document.querySelector('.account_setting');
+        setting_account.addEventListener('click', function() {
+            account_setting.classList.toggle('account_setting_setting_account');
+        });
 
 
     </script>

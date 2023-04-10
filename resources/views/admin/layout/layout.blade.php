@@ -82,10 +82,14 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <div class="option">
-                <a href=""><i class="fa-sharp fa-solid fa-language"></i></a>
-                <a href=""><i class="fa-sharp fa-solid fa-message"></i></a>
-                <a href=""><i class="fa-solid fa-bell"></i></a>
-                <a href=""><i class="fa-sharp fa-solid fa-gear"></i></a>
+                <i class="fa-sharp fa-solid fa-language"></i>
+                <i class="fa-sharp fa-solid fa-message"></i>
+                <i class="fa-solid fa-bell"></i>
+                <i class="setting_account fa-sharp fa-solid fa-gear"></i>
+                <div class="account_setting">
+                    <a href="">Edit</a>
+                    <a href="">Log Out</a>
+                </div>
             </div>
 
         </div>
@@ -104,7 +108,7 @@
 
 
 
-    
+
     <script src="{{asset('/js/mycode/1aa4f49900.js')}}"></script>
     <script src="{{asset('/js/mycode/jquery-3.6.4.min.js')}}"></script>
     @yield('myjs')
@@ -200,6 +204,15 @@
         }
         window.addEventListener('resize', toggleHeaderClass);
         toggleHeaderClass();
+        //////////////////////////////////////////////////////////////////////setting_account
+        var setting_account = document.querySelector('.setting_account');
+        var account_setting = document.querySelector('.account_setting');
+        setting_account.addEventListener('click', function() {
+            account_setting.classList.toggle('account_setting_setting_account');
+        });
+
+
+
     </script>
 </body>
 
