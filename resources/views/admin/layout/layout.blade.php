@@ -184,11 +184,17 @@
 
 
         function toggleHeaderClass() {
-            if (window.innerWidth > 720) {
+            var sidebarwidth = window.getComputedStyle(sidebar);
+            
+             if(window.innerWidth > 720  ){
+                if(window.innerWidth > 720 && sidebarwidth.getPropertyValue('width') == '65px' ){
+                    return;
+                }
                 sidebar.classList.remove('sidebar_menu_icon_open');
-                main.classList.remove('main_sidebar');
-                tab_header.classList.remove('tab_header_sidebar');
-            } else {
+                    main.classList.remove('main_sidebar');
+                    tab_header.classList.remove('tab_header_sidebar');
+            }
+            else {
                 for (var i = 0; i < panels.length; i++) {
                     panels[i].classList.remove('panel_sidebar');
                     if (panels[i].style.maxHeight) {

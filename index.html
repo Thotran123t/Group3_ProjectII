@@ -13,11 +13,12 @@
             font-family: 'Open Sans', sans-serif;
         }
 
-        body{
+        body {
             height: 100vh;
             background-color: #eef1f3;
 
         }
+
         /*sidebar*/
         .sidebar {
             width: 275px;
@@ -28,9 +29,9 @@
             background-color: #fff;
             box-shadow: 0 12px 30px rgba(80, 143, 244, .1);
             overflow-y: auto;
-            z-index: 1;
+            z-index: 2;
         }
-    
+
         .sidebar::-webkit-scrollbar {
             display: none;
         }
@@ -44,7 +45,8 @@
             cursor: pointer;
             user-select: none;
         }
-        .sidebar .menu_icon_close{
+
+        .sidebar .menu_icon_close {
             position: absolute;
             cursor: pointer;
             user-select: none;
@@ -55,7 +57,7 @@
 
         .sidebar nav {
             height: 100%;
-            padding-top:175px;
+            padding-top: 175px;
             position: relative;
         }
 
@@ -143,6 +145,7 @@
             height: 100%;
 
         }
+
         .main::after {
             content: "";
             position: fixed;
@@ -167,7 +170,7 @@
             display: flex;
             z-index: 1;
         }
-        
+
 
         .main .tab_header .input_search {
             width: 50%;
@@ -191,15 +194,16 @@
             font-size: 19px;
         }
 
-        .main .tab_header .option{
+        .main .tab_header .option {
             position: relative;
         }
-        .main .tab_header .option> i{
+
+        .main .tab_header .option>i {
             font-size: 20px;
             padding: 0 10px;
         }
 
-        .main .tab_header .option> div{
+        .main .tab_header .option>div {
             position: absolute;
             right: -16%;
             top: 45px;
@@ -209,7 +213,7 @@
             display: none;
         }
 
-        .main .tab_header .option div a{
+        .main .tab_header .option div a {
             display: block;
             padding: 10px 35px;
             text-decoration: none;
@@ -217,7 +221,8 @@
             white-space: nowrap;
         }
 
-        .main .tab_header .menu_icon_open , .sidebar .menu_icon_close {
+        .main .tab_header .menu_icon_open,
+        .sidebar .menu_icon_close {
             font-size: 25px;
             display: none;
         }
@@ -273,9 +278,10 @@
                 flex-basis: 40%;
             }
 
-            .main .tab_header .option> div{
+            .main .tab_header .option>div {
                 right: -70%;
             }
+
             .main .tab_header .option i:nth-of-type(-n+3) {
                 display: none;
             }
@@ -299,9 +305,10 @@
                 display: none;
             }
 
-            body .main{
+            body .main {
                 width: 100% !important;
             }
+
             body .main .tab_header {
                 width: calc(100% - 55px) !important;
             }
@@ -311,7 +318,8 @@
                 margin: 0 0 15px 0;
             }
 
-            .main .tab_header .menu_icon_open , .sidebar .menu_icon_close{
+            .main .tab_header .menu_icon_open,
+            .sidebar .menu_icon_close {
                 display: block;
             }
 
@@ -339,10 +347,11 @@
             rotate: 180deg;
         }
 
-        .main_sidebar{
+        .main_sidebar {
             width: calc(100% - 65px) !important;
         }
-        .tab_header_sidebar{
+
+        .tab_header_sidebar {
             width: calc(100% - 124px) !important;
         }
 
@@ -366,7 +375,7 @@
         }
 
         /*setting_account*/
-        .account_setting_setting_account{
+        .account_setting_setting_account {
             display: block !important;
         }
     </style>
@@ -535,7 +544,9 @@
         </div> -->
 
 
-        <section class="profile"><div>helo</div></section>
+        <section class="profile">
+            <div>helo</div>
+        </section>
         <section class="update"></section>
         <section class="delete"></section>
 
@@ -618,14 +629,19 @@
 
 
         function toggleHeaderClass() {
-            if (window.innerWidth > 720) {
+            var sidebarwidth = window.getComputedStyle(sidebar);
+            
+             if(window.innerWidth > 720  ){
+                if(window.innerWidth > 720 && sidebarwidth.getPropertyValue('width') == '65px' ){
+                    return;
+                }
                 sidebar.classList.remove('sidebar_menu_icon_open');
-                main.classList.remove('main_sidebar');
-                tab_header.classList.remove('tab_header_sidebar');
+                    main.classList.remove('main_sidebar');
+                    tab_header.classList.remove('tab_header_sidebar');
             }
-            else{
+            else {
                 for (var i = 0; i < panels.length; i++) {
-                panels[i].classList.remove('panel_sidebar');
+                    panels[i].classList.remove('panel_sidebar');
                     if (panels[i].style.maxHeight) {
                         panels[i].style.display = 'none';
                     }
@@ -642,7 +658,7 @@
         //////////////////////////////////////////////////////////////////////setting_account
         var setting_account = document.querySelector('.setting_account');
         var account_setting = document.querySelector('.account_setting');
-        setting_account.addEventListener('click', function() {
+        setting_account.addEventListener('click', function () {
             account_setting.classList.toggle('account_setting_setting_account');
         });
 
