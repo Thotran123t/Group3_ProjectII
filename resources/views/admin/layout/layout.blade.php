@@ -82,7 +82,6 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <div class="option">
-                <i class="fa-sharp fa-solid fa-language"></i>
                 <i class="fa-sharp fa-solid fa-message"></i>
                 <i class="fa-solid fa-bell"></i>
                 <i class="setting_account fa-sharp fa-solid fa-gear"></i>

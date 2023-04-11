@@ -27,12 +27,13 @@ Route::get('/', function () {
 Route::prefix('admin')->group(function(){
     Route::post('checklogin', [UserController::class,'checklogin'])->name('checklogin');
     Route::get('login', [UserController::class,'index']);
-    Route::Resource('admin',UserController::class);
 });
 
 Route::prefix('admin')->middleware('checkUserRole')->group(function(){
     Route::Resource('/category',CategoryController::class);
     Route::Resource('/product',ProductController::class);
+    Route::Resource('/admin',UserController::class);
+
 
     
     //this view haven't controller

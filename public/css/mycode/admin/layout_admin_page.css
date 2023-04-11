@@ -225,7 +225,7 @@ body{
     .main .tab_header .option> div{
         right: -70%;
     }
-    .main .tab_header .option i:nth-of-type(-n+3) {
+    .main .tab_header .option i:nth-of-type(-n+2) {
         display: none;
     }
 }

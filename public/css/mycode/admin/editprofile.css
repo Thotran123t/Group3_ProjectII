@@ -1,0 +1,44 @@
+        /*edit profile*/
+        .main .editprofile {
+            padding: 5px;
+            width: 95%;
+            margin: 20px auto;
+        }
+        .main .editprofile> .title, section{
+            margin:20px 0;
+            padding:30px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .main .editprofile section p{
+            padding:10px 0 20px 0;
+            font-size: 14px;
+        }
+        .main .editprofile section form input{
+            font-size: 17px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 650px;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid #d7dbdd;
+            outline: none;
+            padding: 0 10px;
+        }
+        .main .editprofile section form .information,
+        .main .editprofile section form .updatepassword{
+            width: 85px;
+            height: 35px;
+            border: none;
+            background: black;
+            color: white;
+            border-radius: 3px;
+        }
+        .main .editprofile section form .deleteaccount{
+            color: white;
+            height: 35px;
+            width: 135px;
+            background: red;
+            border: none;
+            border-radius: 3px;
+        }

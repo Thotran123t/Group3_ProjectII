@@ -19,7 +19,12 @@
 
         }
 
+
+
         /*sidebar*/
+
+
+
         .sidebar {
             width: 275px;
             position: fixed;
@@ -31,11 +36,9 @@
             overflow-y: auto;
             z-index: 2;
         }
-
         .sidebar::-webkit-scrollbar {
             display: none;
         }
-
         .sidebar .btn_collapser {
             position: fixed;
             top: 20px;
@@ -45,7 +48,6 @@
             cursor: pointer;
             user-select: none;
         }
-
         .sidebar .menu_icon_close {
             position: absolute;
             cursor: pointer;
@@ -54,13 +56,11 @@
             left: 10px;
 
         }
-
         .sidebar nav {
             height: 100%;
             padding-top: 175px;
             position: relative;
         }
-
         .sidebar .header_sidebar {
             position: fixed;
             height: 150px;
@@ -74,12 +74,10 @@
             flex-direction: column;
             justify-content: center;
         }
-
         .sidebar .name_user {
             overflow: hidden;
             white-space: nowrap;
         }
-
         .sidebar .logo_user {
             width: 75px;
             height: 75px;
@@ -87,18 +85,15 @@
             margin: 0 auto;
             overflow: hidden;
         }
-
         .sidebar .header_sidebar span {
             padding: 10px 0;
             text-align: center;
         }
-
         .sidebar ul[class="sidebar-menu"] {
             list-style: none;
             height: 100%;
             padding: 0;
         }
-
         .sidebar .sidebar-menu .panel {
             max-height: 0px;
             overflow: hidden;
@@ -106,7 +101,6 @@
             background-color: #eef1f3;
             padding: 0 15px 0 45px;
         }
-
         .sidebar .sidebar-menu .panel a {
             display: block;
             color: black;
@@ -114,7 +108,6 @@
             padding: 10px 5px 10px 35px;
             white-space: nowrap;
         }
-
         .sidebar .sidebar-menu li {
             cursor: pointer;
             user-select: none;
@@ -123,19 +116,20 @@
             height: 45px;
             width: 275px;
         }
-
         .sidebar .sidebar-menu li i {
             font-size: 18px;
             width: 65px;
             text-align: center;
         }
-
         .sidebar .sidebar-menu li span {
             padding-left: 15px;
         }
 
 
+
         /* main */
+
+
 
         .main {
             width: calc(100% - 275px);
@@ -145,7 +139,6 @@
             height: 100%;
 
         }
-
         .main::after {
             content: "";
             position: fixed;
@@ -155,7 +148,7 @@
             background-color: #eef1f3;
             z-index: 0;
         }
-
+        /* tab header main*/
         .main .tab_header {
             border-radius: 5px;
             position: fixed;
@@ -170,13 +163,10 @@
             display: flex;
             z-index: 1;
         }
-
-
         .main .tab_header .input_search {
             width: 50%;
             position: relative;
         }
-
         .main .tab_header .input_search input {
             font-size: 15px;
             width: 100%;
@@ -186,23 +176,19 @@
             padding: 0 45px 0 20px;
             border: 1px solid gray;
         }
-
         .main .tab_header .input_search i {
             position: absolute;
             right: 16px;
             top: 8px;
             font-size: 19px;
         }
-
         .main .tab_header .option {
             position: relative;
         }
-
         .main .tab_header .option>i {
             font-size: 20px;
             padding: 0 10px;
         }
-
         .main .tab_header .option>div {
             position: absolute;
             right: -16%;
@@ -212,7 +198,6 @@
             background-color: #eef1f3;
             display: none;
         }
-
         .main .tab_header .option div a {
             display: block;
             padding: 10px 35px;
@@ -220,33 +205,28 @@
             color: black;
             white-space: nowrap;
         }
-
         .main .tab_header .menu_icon_open,
         .sidebar .menu_icon_close {
             font-size: 25px;
             display: none;
         }
-
-
+        /*dashboard*/
         .main .wrapper {
             padding: 5px;
             width: 95%;
             margin: 20px auto;
         }
-
         .main header {
             background-color: #fff;
             border-radius: 5px;
             padding: 15px;
         }
-
         .main .columns {
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
             margin: 25px 0;
         }
-
         .main .column {
             flex: 1;
             background-color: #fff;
@@ -254,19 +234,60 @@
             margin: 10px;
             padding: 10px;
         }
-
         .main .column:first-child {
             margin-left: 0;
         }
-
         .main .column:last-child {
             margin-right: 0;
         }
-
         .main footer {
             background-color: #fff;
             border-radius: 5px;
             padding: 15px;
+        }
+        /*edit profile*/
+        .main .editprofile {
+            padding: 5px;
+            width: 95%;
+            margin: 20px auto;
+        }
+        .main .editprofile> .title, section{
+            margin:20px 0;
+            padding:30px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .main .editprofile section p{
+            padding:10px 0 20px 0;
+            font-size: 14px;
+        }
+        .main .editprofile section form input{
+            font-size: 17px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 650px;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid #d7dbdd;
+            outline: none;
+            padding: 0 10px;
+        }
+        .main .editprofile section form .information,
+        .main .editprofile section form .updatepassword{
+            width: 85px;
+            height: 35px;
+            border: none;
+            background: black;
+            color: white;
+            border-radius: 3px;
+        }
+        .main .editprofile section form .deleteaccount{
+            color: white;
+            height: 35px;
+            width: 135px;
+            background: red;
+            border: none;
+            border-radius: 3px;
         }
 
 
@@ -282,7 +303,7 @@
                 right: -70%;
             }
 
-            .main .tab_header .option i:nth-of-type(-n+3) {
+            .main .tab_header .option i:nth-of-type(-n+2) {
                 display: none;
             }
 
@@ -329,6 +350,9 @@
 
         }
 
+
+
+
         /*add class*/
 
         /*collapser-sidebar*/
@@ -337,34 +361,27 @@
             height: 50px !important;
 
         }
-
         .name_user_sidebar {
             display: none;
         }
-
         .btn_collapser_sidebar {
             left: 55px !important;
             rotate: 180deg;
         }
-
         .main_sidebar {
             width: calc(100% - 65px) !important;
         }
-
         .tab_header_sidebar {
             width: calc(100% - 124px) !important;
         }
-
         .sidebar_sidebar {
             width: 65px;
         }
-
         .panel_sidebar {
             position: fixed;
             left: 65px;
             margin-top: -50px;
         }
-
         .header_sidebar_sidebar {
             width: 65px !important;
         }
@@ -373,7 +390,6 @@
         .sidebar_menu_icon_open {
             left: 0;
         }
-
         /*setting_account*/
         .account_setting_setting_account {
             display: block !important;
@@ -453,7 +469,6 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
             <div class="option">
-                <i class="fa-sharp fa-solid fa-language"></i>
                 <i class="fa-sharp fa-solid fa-message"></i>
                 <i class="fa-solid fa-bell"></i>
                 <i class="setting_account fa-sharp fa-solid fa-gear"></i>
@@ -544,11 +559,61 @@
         </div> -->
 
 
-        <section class="profile">
-            <div>helo</div>
-        </section>
-        <section class="update"></section>
-        <section class="delete"></section>
+        <div class="editprofile">
+            <h1 class="title">Profile</h1>
+            <section class="profile">
+                <h2>Profile Information</h1>
+                <p>Update your account's profile information and email address.</p>
+                <form action="">
+                    <div>
+                        <label for="name">Name</label><br>
+                        <input type="text" name="name">
+                    </div>
+
+                    <div>
+                        <label for="email">Email</label><br>
+                        <input type="email" name="email">
+                    </div>
+
+                    <button type="submit" class="information">Save</button>
+                </form>
+            </section>
+
+
+            <section class="update">
+                <h2>Update Password</h2>
+                <p>Ensure your account is using a long, random password to stay secure.</p>
+                <form action="">
+                    <div>
+                        <label for="curentpassword">Current Password</label><br>
+                        <input type="password" name="curentpassword">
+                    </div>
+
+                    <div>
+                        <label for="newpassword">New Password</label><br>
+                        <input type="password" name="newpassword">
+                    </div>
+
+                    <div>
+                        <label for="confirmpassword">Confirm Password</label><br>
+                        <input type="password" name="confirmpassword">
+                    </div>
+
+                    <button type="submit" class="updatepassword">Save</button>
+                </form>
+            </section>
+            <section class="delete">
+                <h2>Delete Account</h2>
+                <p>Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting
+                    your account, please download any data or information that you wish to retain.</p>
+                <form action="">
+                    <button type="submit" class="deleteaccount">Delete Account</button>
+                </form>
+            </section>
+        </div>
+
+
+        
 
     </main>
 
@@ -630,14 +695,14 @@
 
         function toggleHeaderClass() {
             var sidebarwidth = window.getComputedStyle(sidebar);
-            
-             if(window.innerWidth > 720  ){
-                if(window.innerWidth > 720 && sidebarwidth.getPropertyValue('width') == '65px' ){
+
+            if (window.innerWidth > 720) {
+                if (window.innerWidth > 720 && sidebarwidth.getPropertyValue('width') == '65px') {
                     return;
                 }
                 sidebar.classList.remove('sidebar_menu_icon_open');
-                    main.classList.remove('main_sidebar');
-                    tab_header.classList.remove('tab_header_sidebar');
+                main.classList.remove('main_sidebar');
+                tab_header.classList.remove('tab_header_sidebar');
             }
             else {
                 for (var i = 0; i < panels.length; i++) {
