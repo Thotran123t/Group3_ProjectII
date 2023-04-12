@@ -1,0 +1,7 @@
+header .sidebar_header {
+    display: flex;
+    justify-content: space-around;
+}
+header .sidebar_header .left_sidebar_header h1{
+    display: inline;
+}
