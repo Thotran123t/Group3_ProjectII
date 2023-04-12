@@ -8,6 +8,8 @@ use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 
 class UserController extends Controller
@@ -17,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin/login');
+        dd('haha');
     }
 
     /**
@@ -33,13 +35,14 @@ class UserController extends Controller
     public function store(Request $request)
     {
         // Mã hóa mật khẩu
-        $password = bcrypt($request->password);
+        $password = Hash::make($request->password);
 
         // Tạo hoặc cập nhật người dùng trong cơ sở dữ liệu
         $admin = User::firstOrCreate(['email' => $request->email], [
             'name' => $request->name,
             'email' => $request->email,
             'password' => $password,
+            'image' => "images/myimg/admin/logo-user-default.png",
         ]);
 
         if ($admin->wasRecentlyCreated) {
@@ -48,6 +51,7 @@ class UserController extends Controller
             return response()->json('error');
         }
     }
+
 
 
 
@@ -64,29 +68,54 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+
+    public function update(Request $request, $id)
     {
-        //
+
+        $user = User::findOrFail($id);
+        if ($request->confirmpassword || $request->newpassword) {
+            if (!Hash::check($request->curentpassword, $user->password)) {
+                return ['notification' => 'password error'];
+            } elseif (Hash::check($request->curentpassword, $user->password) && $request->newpassword != $request->confirmpassword) {
+                return ['notification' => 'password incorrect'];
+            } else {
+                $user->password = Hash::make($request->newpassword);
+                $user->save();
+            }
+        } else {
+
+            if ($request->hasFile('newimguser')) {
+                $user->name = $request->name;
+                $user->email = $request->email;
+
+                $file = $request->file('newimguser');
+                $filename = $file->getClientOriginalName();
+                $file->move(public_path('images/myimg/admin'), $filename);
+                $user->image = 'images/myimg/admin/' . $filename;
+            } else {
+                $user->name = $request->name;
+                $user->email = $request->email;
+            }
+            $user->save();
+            return [
+                'name' => $user->name,
+                'email' => $user->email,
+            ];
+        }
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        //
-    }
-    public function checklogin(Request $request)
-    {
-        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-            return response()->json('successfully');
-        };
-        return response()->json('error');
+        User::findorfail($id)->delete();
+        return redirect('admin/login');
     }
 }

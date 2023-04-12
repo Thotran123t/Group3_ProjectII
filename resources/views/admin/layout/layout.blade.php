@@ -16,16 +16,21 @@
     <header class="sidebar">
         <nav class="">
             <div class="header_sidebar">
-                <img class="logo_user" src="{{ asset('/images/myimg/admin/background-sidebar.jpg')}}" alt="">
+                <img class="logo_user" src="{{ asset($auth->image) }}" alt="">
                 <span class="name_user">{{$auth->name}}</span>
             </div>
             <i class="btn_collapser fa-solid fa-circle-arrow-left"></i>
             <i class="menu_icon_close fa-solid fa-xmark"></i>
             <ul class="sidebar-menu">
-                <li><i class="fa-sharp fa-solid fa-house-user"></i>
-                    <span>Dashboard</span>
+
+                <li><a href="{{route('dashboard')}}">
+                        <i class="fa-sharp fa-solid fa-house-user"></i>
+                        <span>Dashboard</span>
+                    </a>
                 </li>
-                <li class="accordion"><i class="fas fa-users-cog"></i>
+
+                <li class="accordion">
+                    <i class="fas fa-users-cog"></i>
                     <span>Admin</span>
                 </li>
                 <div class="panel">
@@ -33,7 +38,8 @@
                     <a href="">Create New Admin</a>
                 </div>
 
-                <li class="accordion"><i class="fa-solid fa-user-large"></i>
+                <li class="accordion">
+                    <i class="fa-solid fa-user-large"></i>
                     <span>User</span>
                 </li>
                 <div class="panel">
@@ -41,7 +47,8 @@
                     <a href="">Create New User</a>
                 </div>
 
-                <li class="accordion"><i class="fa fa-product-hunt"></i>
+                <li class="accordion">
+                    <i class="fa fa-product-hunt"></i>
                     <span>Product</span>
                 </li>
                 <div class="panel">
@@ -50,7 +57,8 @@
                 </div>
 
 
-                <li class="accordion"><i class="fa-sharp fa-solid fa-folder-open"></i>
+                <li class="accordion">
+                    <i class="fa-sharp fa-solid fa-folder-open"></i>
                     <span>Category</span>
                 </li>
                 <div class="panel">
@@ -58,8 +66,8 @@
                     <a href="">Empty</a>
                     <a href="">Empty</a>
                 </div>
-                <li class="accordion"><i class="fa fa-sort"></i>
-
+                <li class="accordion">
+                    <i class="fa fa-sort"></i>
                     <span>Order</span>
                 </li>
                 <div class="panel">
@@ -75,7 +83,7 @@
     <main class="main">
 
         <div class="tab_header">
-            <a class="logo_brand" href=""><img src="" alt="" width="50px" height="50px"></a>
+            <a class="logo_brand" href=""><img src="{{ asset('/images/myimg/logo-apple.png')}}" alt="" width="50px" height="60px"></a>
             <i class="menu_icon_open fa-solid fa-bars"></i>
             <div class="input_search">
                 <input type="text" placeholder="Search ...">
@@ -86,8 +94,8 @@
                 <i class="fa-solid fa-bell"></i>
                 <i class="setting_account fa-sharp fa-solid fa-gear"></i>
                 <div class="account_setting">
-                    <a href="">Edit</a>
-                    <a href="">Log Out</a>
+                    <a href="{{route('editprofile')}}">Edit</a>
+                    <a href="{{route('logout')}}">Log Out</a>
                 </div>
             </div>
 
@@ -184,16 +192,15 @@
 
         function toggleHeaderClass() {
             var sidebarwidth = window.getComputedStyle(sidebar);
-            
-             if(window.innerWidth > 720  ){
-                if(window.innerWidth > 720 && sidebarwidth.getPropertyValue('width') == '65px' ){
+
+            if (window.innerWidth > 720) {
+                if (window.innerWidth > 720 && sidebarwidth.getPropertyValue('width') == '65px') {
                     return;
                 }
                 sidebar.classList.remove('sidebar_menu_icon_open');
-                    main.classList.remove('main_sidebar');
-                    tab_header.classList.remove('tab_header_sidebar');
-            }
-            else {
+                main.classList.remove('main_sidebar');
+                tab_header.classList.remove('tab_header_sidebar');
+            } else {
                 for (var i = 0; i < panels.length; i++) {
                     panels[i].classList.remove('panel_sidebar');
                     if (panels[i].style.maxHeight) {
@@ -215,9 +222,6 @@
         setting_account.addEventListener('click', function() {
             account_setting.classList.toggle('account_setting_setting_account');
         });
-
-
-
     </script>
 </body>
 

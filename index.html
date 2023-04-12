@@ -19,6 +19,12 @@
 
         }
 
+        li,
+        i {
+            cursor: pointer;
+            user-select: none;
+        }
+
 
 
         /*sidebar*/
@@ -36,31 +42,32 @@
             overflow-y: auto;
             z-index: 2;
         }
+
         .sidebar::-webkit-scrollbar {
             display: none;
         }
+
         .sidebar .btn_collapser {
             position: fixed;
             top: 20px;
             left: 265px;
             font-size: 20px;
             transition: .3s;
-            cursor: pointer;
-            user-select: none;
         }
+
         .sidebar .menu_icon_close {
             position: absolute;
-            cursor: pointer;
-            user-select: none;
             top: 10px;
             left: 10px;
 
         }
+
         .sidebar nav {
             height: 100%;
             padding-top: 175px;
             position: relative;
         }
+
         .sidebar .header_sidebar {
             position: fixed;
             height: 150px;
@@ -74,10 +81,12 @@
             flex-direction: column;
             justify-content: center;
         }
+
         .sidebar .name_user {
             overflow: hidden;
             white-space: nowrap;
         }
+
         .sidebar .logo_user {
             width: 75px;
             height: 75px;
@@ -85,15 +94,18 @@
             margin: 0 auto;
             overflow: hidden;
         }
+
         .sidebar .header_sidebar span {
             padding: 10px 0;
             text-align: center;
         }
+
         .sidebar ul[class="sidebar-menu"] {
             list-style: none;
             height: 100%;
             padding: 0;
         }
+
         .sidebar .sidebar-menu .panel {
             max-height: 0px;
             overflow: hidden;
@@ -101,6 +113,7 @@
             background-color: #eef1f3;
             padding: 0 15px 0 45px;
         }
+
         .sidebar .sidebar-menu .panel a {
             display: block;
             color: black;
@@ -108,19 +121,20 @@
             padding: 10px 5px 10px 35px;
             white-space: nowrap;
         }
+
         .sidebar .sidebar-menu li {
-            cursor: pointer;
-            user-select: none;
             align-items: center;
             display: flex;
             height: 45px;
             width: 275px;
         }
+
         .sidebar .sidebar-menu li i {
             font-size: 18px;
             width: 65px;
             text-align: center;
         }
+
         .sidebar .sidebar-menu li span {
             padding-left: 15px;
         }
@@ -139,6 +153,7 @@
             height: 100%;
 
         }
+
         .main::after {
             content: "";
             position: fixed;
@@ -148,6 +163,7 @@
             background-color: #eef1f3;
             z-index: 0;
         }
+
         /* tab header main*/
         .main .tab_header {
             border-radius: 5px;
@@ -163,10 +179,12 @@
             display: flex;
             z-index: 1;
         }
+
         .main .tab_header .input_search {
             width: 50%;
             position: relative;
         }
+
         .main .tab_header .input_search input {
             font-size: 15px;
             width: 100%;
@@ -176,19 +194,23 @@
             padding: 0 45px 0 20px;
             border: 1px solid gray;
         }
+
         .main .tab_header .input_search i {
             position: absolute;
             right: 16px;
             top: 8px;
             font-size: 19px;
         }
+
         .main .tab_header .option {
             position: relative;
         }
+
         .main .tab_header .option>i {
             font-size: 20px;
             padding: 0 10px;
         }
+
         .main .tab_header .option>div {
             position: absolute;
             right: -16%;
@@ -198,6 +220,7 @@
             background-color: #eef1f3;
             display: none;
         }
+
         .main .tab_header .option div a {
             display: block;
             padding: 10px 35px;
@@ -205,28 +228,33 @@
             color: black;
             white-space: nowrap;
         }
+
         .main .tab_header .menu_icon_open,
         .sidebar .menu_icon_close {
             font-size: 25px;
             display: none;
         }
+
         /*dashboard*/
         .main .wrapper {
             padding: 5px;
             width: 95%;
             margin: 20px auto;
         }
+
         .main header {
             background-color: #fff;
             border-radius: 5px;
             padding: 15px;
         }
+
         .main .columns {
             display: flex;
             flex-flow: row wrap;
             justify-content: center;
             margin: 25px 0;
         }
+
         .main .column {
             flex: 1;
             background-color: #fff;
@@ -234,34 +262,79 @@
             margin: 10px;
             padding: 10px;
         }
+
         .main .column:first-child {
             margin-left: 0;
         }
+
         .main .column:last-child {
             margin-right: 0;
         }
+
         .main footer {
             background-color: #fff;
             border-radius: 5px;
             padding: 15px;
         }
+
         /*edit profile*/
         .main .editprofile {
             padding: 5px;
             width: 95%;
             margin: 20px auto;
         }
-        .main .editprofile> .title, section{
-            margin:20px 0;
-            padding:30px;
+
+        .main .editprofile>.informationuser,
+        section {
+            margin: 20px 0;
+            padding: 30px;
             border-radius: 5px;
             background-color: #fff;
         }
-        .main .editprofile section p{
-            padding:10px 0 20px 0;
+
+        .main .editprofile .informationuser {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main .editprofile .informationuser .imguser {
+            max-width: 250px;
+            position: relative;
+            aspect-ratio: 1/1
+        }
+
+        .main .editprofile .informationuser .imguser img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+
+        .main .editprofile .informationuser .imguser form {
+            position: absolute;
+            right: 0;
+            bottom: 0px;
+        }
+
+        .main .editprofile .informationuser div p {
+            font-size: 14px;
+            padding: 5px 0;
+        }
+
+        .main .editprofile .informationuser div:nth-child(2) {
+            margin-left: 20px;
+        }
+
+        .main .editprofile .informationuser div h1 {
+            margin-bottom: 15px;
+        }
+
+        .main .editprofile section p {
+            padding: 10px 0 20px 0;
             font-size: 14px;
         }
-        .main .editprofile section form input{
+
+        .main .editprofile section form input {
             font-size: 17px;
             margin-bottom: 20px;
             width: 100%;
@@ -272,8 +345,9 @@
             outline: none;
             padding: 0 10px;
         }
+
         .main .editprofile section form .information,
-        .main .editprofile section form .updatepassword{
+        .main .editprofile section form .updatepassword {
             width: 85px;
             height: 35px;
             border: none;
@@ -281,7 +355,8 @@
             color: white;
             border-radius: 3px;
         }
-        .main .editprofile section form .deleteaccount{
+
+        .main .editprofile section form .deleteaccount {
             color: white;
             height: 35px;
             width: 135px;
@@ -348,6 +423,20 @@
                 display: none;
             }
 
+            .main .editprofile .informationuser {
+                display: block;
+            }
+
+            .main .editprofile .informationuser div:nth-child(1) {
+                margin: 0 auto;
+            }
+
+            .main .editprofile .informationuser div:nth-child(2) {
+                margin: 0;
+                text-align: center;
+
+            }
+
         }
 
 
@@ -361,27 +450,34 @@
             height: 50px !important;
 
         }
+
         .name_user_sidebar {
             display: none;
         }
+
         .btn_collapser_sidebar {
             left: 55px !important;
             rotate: 180deg;
         }
+
         .main_sidebar {
             width: calc(100% - 65px) !important;
         }
+
         .tab_header_sidebar {
             width: calc(100% - 124px) !important;
         }
+
         .sidebar_sidebar {
             width: 65px;
         }
+
         .panel_sidebar {
             position: fixed;
             left: 65px;
             margin-top: -50px;
         }
+
         .header_sidebar_sidebar {
             width: 65px !important;
         }
@@ -390,9 +486,40 @@
         .sidebar_menu_icon_open {
             left: 0;
         }
+
         /*setting_account*/
         .account_setting_setting_account {
             display: block !important;
+        }
+
+
+
+        .image-input {
+            position: relative;
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #ddd;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .image-input input[type=file] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image-input i {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            color: #fff;
+            font-size: 20px;
         }
     </style>
 </head>
@@ -480,47 +607,8 @@
 
         </div>
 
-
+        <!-- dashboard-->
         <!-- <div class="wrapper">
-            <header>
-                <h1>3 Column Responsive Layout</h1>
-            </header>
-
-            <section class="columns">
-
-                <div class="column">
-                    <h2>1st Content Area</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
-                        cum praesentium dolor totam voluptatibus recusandae?</p>
-                </div>
-
-                <div class="column">
-                    <h2>2nd Content Area</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
-                        cum praesentium dolor totam voluptatibus recusandae? Illo quod nemo ratione itaque dolores
-                        laudantium error vero laborum blanditiis nostrum.</p>
-                </div>
-
-                <div class="column">
-                    <h2>3rd Content Area</h2>
-                    <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem
-                        ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium
-                        voluptatibus recusandae?</p>
-                </div>
-
-            </section>
-
-            <footer>
-                <h3>Footer</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, porro. Doloribus vitae non dolores
-                    modi dolorum commodi perspiciatis dicta nostrum minus esse, totam officia, quibusdam amet quas
-                    tempora? Voluptatibus, esse.</p>
-            </footer>
-
-        </div>
-
-        <div class="wrapper">
-
             <header>
                 <h1>3 Column Responsive Layout</h1>
             </header>
@@ -558,25 +646,46 @@
 
         </div> -->
 
-
+        <!-- proflile-->
         <div class="editprofile">
-            <h1 class="title">Profile</h1>
+
+            <div class="informationuser">
+                <div class="imguser">
+                    <img class="logo_user" src="{{ asset($auth->image) }}" alt="">
+                    <form>
+                        <label class="image-input">
+                            <input id="changeimguser" type="file" name="image" onchange="changeImage(this)">
+                            <i class="fa fa-pencil"></i>
+                        </label>
+                    </form>
+                </div>
+                <div>
+                    <h1>Profile</h1>
+                    <p>Email : {{$auth->email}}</p>
+                    <p>Name : {{$auth->name}}</p>
+                    <p>Created at: {{$createdAt}}</p>
+                    <p>Updated at: {{$updatedAt}}</p>
+                </div>
+
+            </div>
+
+
             <section class="profile">
                 <h2>Profile Information</h1>
-                <p>Update your account's profile information and email address.</p>
-                <form action="">
-                    <div>
-                        <label for="name">Name</label><br>
-                        <input type="text" name="name">
-                    </div>
+                    <p>Update your account's profile information and email address.</p>
+                    <form action="">
+                        <div>
+                            <label for="name">Name</label><br>
+                            <input type="text" name="name">
+                        </div>
 
-                    <div>
-                        <label for="email">Email</label><br>
-                        <input type="email" name="email">
-                    </div>
+                        <div>
+                            <label for="email">Email</label><br>
+                            <input type="email" name="email">
+                        </div>
 
-                    <button type="submit" class="information">Save</button>
-                </form>
+                        <button type="submit" class="information">Save</button>
+                    </form>
             </section>
 
 
@@ -604,7 +713,8 @@
             </section>
             <section class="delete">
                 <h2>Delete Account</h2>
-                <p>Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting
+                <p>Once your account is deleted, all of its resources and data will be permanently deleted. Before
+                    deleting
                     your account, please download any data or information that you wish to retain.</p>
                 <form action="">
                     <button type="submit" class="deleteaccount">Delete Account</button>
@@ -613,7 +723,7 @@
         </div>
 
 
-        
+
 
     </main>
 

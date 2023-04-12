@@ -15,19 +15,10 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up-container">
-            <form action="" method="POST">
-                @csrf
+            <form >
                 <h1>Create Account</h1>
-                <p id="notification-checkcreate">
-
+                <p style="color:red" id="notification-checkcreate">
                 </p>
-
-                <!-- <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your email for registration</span> -->
                 <input type="text" placeholder="Name" class="namecreate" required />
                 <input type="email" placeholder="Email" class="emailcreate" required />
                 <input type="password" placeholder="Password" class="passwordcreate" required />
@@ -36,16 +27,9 @@
         </div>
         <div class="form-container sign-in-container">
             <form>
-                @csrf
                 <h1>Sign in</h1>
-                <p id="notification-checklogin">
+                <p style="color:red" id="notification-checklogin">
                 </p>
-                <!-- <div class="social-container">
-                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span> -->
                 <input type="email" placeholder="Email" class="emaillogin" required />
                 <input type="password" placeholder="Password" class="passwordlogin" required />
                 <a href="#">Forgot your password?</a>
@@ -83,7 +67,7 @@
     <script>
         $(document).ready(function() {
             const urlchecklogin = "{{route('checklogin')}}";
-            const urlcreateaccount = "{{route('admin.store')}}";
+            const urlcreateaccount = "{{route('createaccount')}}";
             $('#sign-in').click(function(e) {
                 e.preventDefault();
                 let email = $('.emaillogin').val();
@@ -101,7 +85,7 @@
                         if (data == 'successfully') {
                             window.location.href = "{{ route('dashboard') }}";
                         } else {
-                            $('#notification-checklogin').text('thông tin tài khoản hoặc mật khẩu không chính xác !');
+                            $('#notification-checklogin').text('username or password error !');
                         }
 
                     }
@@ -124,9 +108,9 @@
                     },
                     success: function(data) {
                         if (data == 'successfully') {
-                            $('#notification-checkcreate').text('thêm tài khoản thành công !');
+                            $('#notification-checkcreate').text('successfully !');
                         } else {
-                            $('#notification-checkcreate').text('tài khoản đã tồn tại !');
+                            $('#notification-checkcreate').text('Email already exists !');
                         }
 
                     }

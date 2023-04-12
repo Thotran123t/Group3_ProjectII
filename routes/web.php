@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\HomeController;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
@@ -25,8 +26,10 @@ Route::get('/', function () {
 
 
 Route::prefix('admin')->group(function(){
-    Route::post('checklogin', [UserController::class,'checklogin'])->name('checklogin');
-    Route::get('login', [UserController::class,'index']);
+    Route::get('login', [HomeController::class,'login'])->name('login');
+    Route::post('checklogin', [HomeController::class,'checklogin'])->name('checklogin');
+    Route::post('createaccount', [UserController::class,'store'])->name('createaccount');
+
 });
 
 Route::prefix('admin')->middleware('checkUserRole')->group(function(){
@@ -34,12 +37,8 @@ Route::prefix('admin')->middleware('checkUserRole')->group(function(){
     Route::Resource('/product',ProductController::class);
     Route::Resource('/admin',UserController::class);
 
+    Route::get('dashboard', [HomeController::class,'dashboard'])->name('dashboard');
+    Route::get('editprofile', [HomeController::class,'editprofile'])->name('editprofile');
+    Route::get('logout', [HomeController::class,'logout'])->name('logout');
 
-    
-    //this view haven't controller
-    Route::get('/dashboard', function () {
-        $auth = Auth::user();
-        return view('admin.dashboard', ['auth' => $auth]);
-    })->name('dashboard');
-    
 });
