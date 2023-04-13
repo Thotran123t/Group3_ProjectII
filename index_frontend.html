@@ -11,10 +11,62 @@
             display: flex;
             justify-content: space-around;
         }
-        header .sidebar_header .left_sidebar_header h1{
+
+        header .sidebar_header .left_sidebar_header h1 {
             display: inline;
         }
 
+        header .sidebar_header .right_sidebar_header {
+            display: flex;
+            align-items: center;
+        }
+
+        header .sidebar_header .right_sidebar_header img,
+        header .sidebar_header .right_sidebar_header i {
+            display: none;
+        }
+
+        @media (max-width : 580px) {
+            header .sidebar_header {
+                justify-content: start;
+                height: 100%;
+                top: 0;
+                right: 0;
+                position: fixed;
+                flex-direction: column;
+                background-color: red;
+                width: 250px;
+                right: -100%;
+            }
+
+            header .sidebar_header .left_sidebar_header,
+            header .sidebar_header .right_sidebar_header .header_link_right {
+                display: flex;
+                flex-direction: column;
+
+            }
+
+            header .sidebar_header .right_sidebar_header .header_mobie {
+                position: fixed;
+                width: 100%;
+                left: 0;
+                top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: space-evenly;
+            }
+
+
+            header .sidebar_header .right_sidebar_header img,
+            header .sidebar_header .right_sidebar_header i {
+                display: block;
+            }
+        }
+        @media (max-width : 830px) {
+            header .sidebar_header .left_sidebar_header h1 {
+            display: none;
+        }
+        }
     </style>
 </head>
 
@@ -29,11 +81,18 @@
                 <a href="">About</a>
                 <a href="">Contact</a>
             </div>
-            <div class="right-sidebar-header">
-                <input type="text">
-                <a href="">cart</a>
-                <a href="">sign-in</a>
-                <a href="">sign-up</a>
+            <div class="right_sidebar_header">
+                <div class="header_mobie">
+                    <img src="/public/images/myimg/logo-apple.png" alt="" width="30" height="40">
+                    <input type="text">
+                    <i>Toggle</i>
+                </div>
+                <div class="header_link_right">
+                    <a href="">cart</a>
+                    <a href="">sign-in</a>
+                    <a href="">sign-up</a>
+                </div>
+
             </div>
         </nav>
     </header>
