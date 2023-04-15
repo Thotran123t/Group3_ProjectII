@@ -39,6 +39,7 @@ Route::prefix('admin')->middleware('checkUserRole')->group(function(){
 
     Route::get('dashboard', [HomeController::class,'dashboard'])->name('dashboard');
     Route::get('editprofile', [HomeController::class,'editprofile'])->name('editprofile');
+    Route::get('order', [HomeController::class,'order'])->name('order');
     Route::get('logout', [HomeController::class,'logout'])->name('logout');
 
 });

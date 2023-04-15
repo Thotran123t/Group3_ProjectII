@@ -23,20 +23,14 @@
             <i class="menu_icon_close fa-solid fa-xmark"></i>
             <ul class="sidebar-menu">
 
-                <li><a href="{{route('dashboard')}}">
+                <li>
+                    <a href="{{route('dashboard')}}">
                         <i class="fa-sharp fa-solid fa-house-user"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
 
-                <li class="accordion">
-                    <i class="fas fa-users-cog"></i>
-                    <span>Admin</span>
-                </li>
-                <div class="panel">
-                    <a href="">List Admin</a>
-                    <a href="">Create New Admin</a>
-                </div>
+            
 
                 <li class="accordion">
                     <i class="fa-solid fa-user-large"></i>
@@ -66,15 +60,18 @@
                     <a href="">Empty</a>
                     <a href="">Empty</a>
                 </div>
-                <li class="accordion">
+
+                
                     <i class="fa fa-sort"></i>
-                    <span>Order</span>
+               
+
+                <li>
+                    <a href="{{route('order')}}">
+                        <i class="fa-sharp fa-solid fa-house-user"></i>
+                        <span>Order</span>
+                    </a>
                 </li>
-                <div class="panel">
-                    <a href="">Empty</a>
-                    <a href="">Empty</a>
-                    <a href="">Empty</a>
-                </div>
+
             </ul>
         </nav>
     </header>

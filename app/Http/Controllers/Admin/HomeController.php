@@ -25,6 +25,10 @@ class HomeController extends Controller
         $auth = Auth::user();
         return view('admin/dashboard', ['auth' => $auth]);
     }
+    public function order()
+    {
+        return view('admin/order/index');
+    }
     public function editprofile()
     {
         $auth = Auth::user();

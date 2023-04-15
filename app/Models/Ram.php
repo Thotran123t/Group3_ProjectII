@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Image extends Model
+class Ram extends Model
 {
     use HasFactory;
-
     protected $fillable = [
-        'id_product',
-        'path',
+        'name',
+        'image',
     ];
 
-    public function product()
-    {
-        return $this->belongsTo(Product::class);
+    public function product(){//primary key
+        return $this->hasMany(Product::class);
     }
 }
+
+
