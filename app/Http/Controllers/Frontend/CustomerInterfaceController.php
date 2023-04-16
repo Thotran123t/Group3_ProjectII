@@ -31,11 +31,7 @@ class CustomerInterfaceController extends Controller
     }
     public function cart()
     {
-        if (session()->has('user')) {
-            return view('frontend/cart');
-        } else {
-            return view('frontend/sign_in');
-        }
+        return view('frontend/cart');
     }
     public function sign_in()
     {
@@ -50,6 +46,7 @@ class CustomerInterfaceController extends Controller
         $customer = Customer::firstOrCreate(['email' => $request->email], [
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
+            'image' => "images/myimg/admin/logo-user-default.png",
             'email' => $request->email,
             'phone' => $request->phone,
             'address' => $request->address,
@@ -72,7 +69,22 @@ class CustomerInterfaceController extends Controller
         }
     }
 
-    public function signin_user(Request $request)
+    public function signoin_user(Request $request)
+    {}
+
+    public function signout_user(Request $request)
     {
+        if (session()->has('user')) {
+            session()->forget('user');
+            return redirect('frontend/home');
+        }
+    }
+    public function checkout(Request $request)
+    {
+        if (session()->has('user')) {
+            return view('frontend/checkout');
+        } else {
+            return redirect('frontend/sign_in');
+        }
     }
 }

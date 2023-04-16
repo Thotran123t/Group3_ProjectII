@@ -27,7 +27,7 @@
                 <a href="{{route('cart')}}">cart</a>
                 <a href="{{route('sign_in')}}">sign in</a>
                 <a href="{{route('sign_up')}}">signup</a>
-                <i>sign-out</i>
+                <a href="{{route('signout_user')}}">sign-out</a>
             </div>
         </nav>
     </header>

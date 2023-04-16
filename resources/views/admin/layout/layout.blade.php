@@ -30,15 +30,15 @@
                     </a>
                 </li>
 
-            
+
 
                 <li class="accordion">
-                    <i class="fa-solid fa-user-large"></i>
-                    <span>User</span>
+                    <i class="fa-solid fa-users"></i>
+                    <span>Customer</span>
                 </li>
                 <div class="panel">
-                    <a href="">List User</a>
-                    <a href="">Create New User</a>
+                    <a href="{{route('customer.index')}}">List Customer</a>
+                    <a href="{{route('customer.create')}}">Create New Customer</a>
                 </div>
 
                 <li class="accordion">
@@ -46,8 +46,9 @@
                     <span>Product</span>
                 </li>
                 <div class="panel">
-                    <a href="">List Prouduct</a>
-                    <a href="">Create New Product</a>
+                    <a href="{{route('product.index')}}">List IPhone</a>
+                    <a >List MacBook</a>
+                    <a >List AppWatch</a>
                 </div>
 
 
@@ -56,18 +57,14 @@
                     <span>Category</span>
                 </li>
                 <div class="panel">
-                    <a href="">Empty</a>
-                    <a href="">Empty</a>
-                    <a href="">Empty</a>
+                    <a href="{{route('category.index')}}">List Category</a>
+                    <a href="{{route('category.create')}}">Create New Category</a>
                 </div>
 
-                
-                    <i class="fa fa-sort"></i>
-               
 
                 <li>
-                    <a href="{{route('order')}}">
-                        <i class="fa-sharp fa-solid fa-house-user"></i>
+                    <a href="{{route('order.index')}}">
+                        <i class="fa fa-sort"></i>
                         <span>Order</span>
                     </a>
                 </li>
@@ -89,9 +86,9 @@
             <div class="option">
                 <i class="fa-sharp fa-solid fa-message"></i>
                 <i class="fa-solid fa-bell"></i>
-                <i class="setting_account fa-sharp fa-solid fa-gear"></i>
+                <i class="setting_account fa-solid fa-user-large"></i>
                 <div class="account_setting">
-                    <a href="{{route('editprofile')}}">Edit</a>
+                    <a href="{{route('editprofile')}}">Edit Profile</a>
                     <a href="{{route('logout')}}">Log Out</a>
                 </div>
             </div>

@@ -3,10 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Capacity;
 use App\Models\Category;
+use App\Models\Color;
 use App\Models\Product;
 use App\Models\Image;
+use App\Models\Ram;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class ProductController extends Controller
 {
@@ -15,7 +20,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin/product/product');
+        $auth = Auth::user();
+        $product = Product::all();
+        return view('admin/product/iphone/index', ['auth' => $auth , 'product' => $product]);
     }
 
     /**
@@ -23,7 +30,12 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin/product/create_product');
+        $auth = Auth::user();
+        $categoty = Category::all();
+        $color = Color::all();
+        $ram = Ram::all();
+        $capacity = Capacity::all();
+        return view('admin/product/iphone/create', ['auth' => $auth , 'category' => $categoty , 'color' => $color , 'ram' => $ram , 'capacity' => $capacity]);
     }
 
     /**
@@ -32,26 +44,29 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $product = new Product();
-        $product->name = $request->input('name');
-        $product->description = $request->input('description');
-        $product->price = $request->input('price');
-        $product->category_id = $request->input('category_id');
+        $product->name = $request->name;
+        $product->id_category = $request->id_category;
+        $product->id_color = $request->id_color;
+        $product->id_ram = $request->id_ram;
+        $product->id_capacity = $request->id_capacity;
+        $product->price = $request->price;
+        $product->quantity = $request->quantity;
+        $product->description = $request->description;
         $product->save();
 
         // Lưu các ảnh vào bảng product_images
         if ($request->hasFile('images')) {
             $images = $request->file('images');
             foreach ($images as $image) {
-                $filename = time() . '_' . $image->getClientOriginalName();
-                $image->move('_images', $filename);
-    
+                $filename = time() .''. $image->getClientOriginalName();
+                $image->move('images/myimg/product_iphone', $filename);
                 $productImage = new Image();
-                $productImage->product_id = $product->id;
-                $productImage->image_path = '_images/' . $filename;
+                $productImage->id_product = $product->id;
+                $productImage->path = 'images/myimg/product_iphone/' . $filename;
                 $productImage->save();
             }
         }
-        return redirect('/product');
+        return redirect('admin/product');
     }
 
     /**
@@ -83,6 +98,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return redirect('admin/product');
     }
 }

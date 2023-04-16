@@ -277,93 +277,9 @@
             padding: 15px;
         }
 
-        /*edit profile*/
-        .main .editprofile {
-            padding: 5px;
-            width: 95%;
-            margin: 20px auto;
-        }
 
-        .main .editprofile>.informationuser,
-        section {
-            margin: 20px 0;
-            padding: 30px;
-            border-radius: 5px;
-            background-color: #fff;
-        }
 
-        .main .editprofile .informationuser {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
 
-        .main .editprofile .informationuser .imguser {
-            max-width: 250px;
-            position: relative;
-            aspect-ratio: 1/1
-        }
-
-        .main .editprofile .informationuser .imguser img {
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-        }
-
-        .main .editprofile .informationuser .imguser form {
-            position: absolute;
-            right: 0;
-            bottom: 0px;
-        }
-
-        .main .editprofile .informationuser div p {
-            font-size: 14px;
-            padding: 5px 0;
-        }
-
-        .main .editprofile .informationuser div:nth-child(2) {
-            margin-left: 20px;
-        }
-
-        .main .editprofile .informationuser div h1 {
-            margin-bottom: 15px;
-        }
-
-        .main .editprofile section p {
-            padding: 10px 0 20px 0;
-            font-size: 14px;
-        }
-
-        .main .editprofile section form input {
-            font-size: 17px;
-            margin-bottom: 20px;
-            width: 100%;
-            max-width: 650px;
-            height: 40px;
-            border-radius: 5px;
-            border: 1px solid #d7dbdd;
-            outline: none;
-            padding: 0 10px;
-        }
-
-        .main .editprofile section form .information,
-        .main .editprofile section form .updatepassword {
-            width: 85px;
-            height: 35px;
-            border: none;
-            background: black;
-            color: white;
-            border-radius: 3px;
-        }
-
-        .main .editprofile section form .deleteaccount {
-            color: white;
-            height: 35px;
-            width: 135px;
-            background: red;
-            border: none;
-            border-radius: 3px;
-        }
 
 
         /*responsive*/
@@ -494,39 +410,53 @@
 
 
 
-        .image-input {
-            position: relative;
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background-color: #ddd;
-            border: 1px solid #ccc;
+
+        /*customer*/
+        .main .listcustomer {
+            padding: 5px;
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .main .listcustomer .header span {
+            line-height: 2;
+            font-size: 13px;
+        }
+        .main .listcustomer .header{
+            padding:15px 0; 
+        }
+
+        .main .listcustomer .body {
+            background: white;
             border-radius: 5px;
-            overflow: hidden;
+            padding:  20px;
         }
-
-        .image-input input[type=file] {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
+        .main .listcustomer .body h3{
+            padding:20px 0;
+        }
+        .main .listcustomer .body table{
             width: 100%;
-            height: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            
+        }
+        .main .listcustomer .body table td{
+            padding:15px
         }
 
-        .image-input i {
-            position: absolute;
-            bottom: 5px;
-            right: 5px;
-            color: #fff;
-            font-size: 20px;
+
+
+
+        /* .main .listcustomer .title h1{
+            line-height:54px;
         }
+        .main .listcustomer .title span{
+            font-size: 13px;
+        } */
     </style>
 </head>
 
 <body>
-
-
     <header class="sidebar">
         <nav class="">
             <div class="header_sidebar">
@@ -584,10 +514,7 @@
             </ul>
         </nav>
     </header>
-
-
     <main class="main">
-
         <div class="tab_header">
             <a class="logo_brand" href=""><img src="" alt="" width="50px" height="50px"></a>
             <i class="menu_icon_open fa-solid fa-bars"></i>
@@ -607,121 +534,41 @@
 
         </div>
 
-        <!-- dashboard-->
-        <!-- <div class="wrapper">
-            <header>
-                <h1>3 Column Responsive Layout</h1>
-            </header>
 
-            <section class="columns">
 
-                <div class="column">
-                    <h2>1st Content Area</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
-                        cum praesentium dolor totam voluptatibus recusandae?</p>
+        <div class="listcustomer">
+            <section class="header">
+                <div class="title">
+                    <h1>Customer List</h1>
+                    <span>IShopApple Admin Panel</span>
                 </div>
-
-                <div class="column">
-                    <h2>2nd Content Area</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto necessitatibus
-                        cum praesentium dolor totam voluptatibus recusandae? Illo quod nemo ratione itaque dolores
-                        laudantium error vero laborum blanditiis nostrum.</p>
-                </div>
-
-                <div class="column">
-                    <h2>3rd Content Area</h2>
-                    <p>Illo quod nemo ratione itaque dolores laudantium error vero laborum blanditiis nostrum. Lorem
-                        ipsum dolor sit amet consectetur adipisicing elit. Sequi ratione architecto cum praesentium
-                        voluptatibus recusandae?</p>
-                </div>
-
+            </section>
+            <section class=body>
+                <h3>Customer Lists</h3>
+                <hr>
+                <table border="1">
+                    <thead>
+                        <td>id</td>
+                        <td>fullname</td>
+                        <td>image</td>
+                        <td>email</td>
+                        <td>phone</td>
+                        <td>address</td>
+                        <td>action</td>
+                    </thead>
+                    <tbody>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tbody>
+                    <tfoot></tfoot>
+                </table>
             </section>
 
-            <footer>
-                <h3>Footer</h3>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsam, porro. Doloribus vitae non dolores
-                    modi dolorum commodi perspiciatis dicta nostrum minus esse, totam officia, quibusdam amet quas
-                    tempora? Voluptatibus, esse.</p>
-            </footer>
-
-        </div> -->
-
-        <!-- proflile-->
-        <div class="editprofile">
-
-            <div class="informationuser">
-                <div class="imguser">
-                    <img class="logo_user" src="{{ asset($auth->image) }}" alt="">
-                    <form>
-                        <label class="image-input">
-                            <input id="changeimguser" type="file" name="image" onchange="changeImage(this)">
-                            <i class="fa fa-pencil"></i>
-                        </label>
-                    </form>
-                </div>
-                <div>
-                    <h1>Profile</h1>
-                    <p>Email : {{$auth->email}}</p>
-                    <p>Name : {{$auth->name}}</p>
-                    <p>Created at: {{$createdAt}}</p>
-                    <p>Updated at: {{$updatedAt}}</p>
-                </div>
-
-            </div>
-
-
-            <section class="profile">
-                <h2>Profile Information</h1>
-                    <p>Update your account's profile information and email address.</p>
-                    <form action="">
-                        <div>
-                            <label for="name">Name</label><br>
-                            <input type="text" name="name">
-                        </div>
-
-                        <div>
-                            <label for="email">Email</label><br>
-                            <input type="email" name="email">
-                        </div>
-
-                        <button type="submit" class="information">Save</button>
-                    </form>
-            </section>
-
-
-            <section class="update">
-                <h2>Update Password</h2>
-                <p>Ensure your account is using a long, random password to stay secure.</p>
-                <form action="">
-                    <div>
-                        <label for="curentpassword">Current Password</label><br>
-                        <input type="password" name="curentpassword">
-                    </div>
-
-                    <div>
-                        <label for="newpassword">New Password</label><br>
-                        <input type="password" name="newpassword">
-                    </div>
-
-                    <div>
-                        <label for="confirmpassword">Confirm Password</label><br>
-                        <input type="password" name="confirmpassword">
-                    </div>
-
-                    <button type="submit" class="updatepassword">Save</button>
-                </form>
-            </section>
-            <section class="delete">
-                <h2>Delete Account</h2>
-                <p>Once your account is deleted, all of its resources and data will be permanently deleted. Before
-                    deleting
-                    your account, please download any data or information that you wish to retain.</p>
-                <form action="">
-                    <button type="submit" class="deleteaccount">Delete Account</button>
-                </form>
-            </section>
         </div>
-
 
 
 

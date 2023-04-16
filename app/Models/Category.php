@@ -15,6 +15,6 @@ class Category extends Model
     ];
 
     public function product(){//primary key
-        return $this->hasMany(Product::class);
+        return $this->hasMany(Product::class,'id_category');
     }
 }

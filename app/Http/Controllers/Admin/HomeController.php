@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,6 +14,8 @@ class HomeController extends Controller
     {
         return view('admin/login');
     }
+
+
     public function checklogin(Request $request)
     {
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
@@ -20,15 +23,23 @@ class HomeController extends Controller
         };
         return response()->json('error');
     }
+
+
     public function dashboard()
     {
         $auth = Auth::user();
         return view('admin/dashboard', ['auth' => $auth]);
     }
-    public function order()
+
+
+    public function searchname(Request $request)
     {
-        return view('admin/order/index');
+        $name = $request->name;
+        $product = Product::where('title', 'like', '%' . $name . '%')->get();
+        return view('examp/index', compact('examp'));
     }
+
+
     public function editprofile()
     {
         $auth = Auth::user();
@@ -36,6 +47,7 @@ class HomeController extends Controller
         $updatedAt = $auth->updated_at->format('d/m/Y H:i:s');
         return view('admin/editprofile', ['auth' => $auth, 'createdAt' => $createdAt, 'updatedAt' => $updatedAt]);
     }
+    
     public function logout()
     {
         Auth::guard('web')->logout();

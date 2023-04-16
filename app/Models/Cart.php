@@ -13,10 +13,10 @@ class Cart extends Model
         'id_customer',
     ];
     public function cart_product(){//primary key
-        return $this->hasMany(Cart_Product::class);
+        return $this->hasMany(Cart_Product::class,'id_cart');
     }
     public function customer(){//primary key
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class,'id_customer');
     }
 
 }

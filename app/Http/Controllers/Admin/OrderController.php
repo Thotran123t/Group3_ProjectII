@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-
-class CategoryController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class CategoryController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        return view('admin/category/index', ['auth' => $auth]);
+        return view('admin/order/index', ['auth' => $auth]);
     }
 
     /**
@@ -24,8 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $auth = Auth::user();
-        return view('admin/category/create', ['auth' => $auth]);
+        //
     }
 
     /**
@@ -39,7 +37,7 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Category $category)
+    public function show(Order $order)
     {
         //
     }
@@ -47,7 +45,7 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
+    public function edit(Order $order)
     {
         //
     }
@@ -55,7 +53,7 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Order $order)
     {
         //
     }
@@ -63,9 +61,8 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Category $category)
+    public function destroy(Order $order)
     {
-        $category->delete();
-        return redirect('admin/category');
+        //
     }
 }

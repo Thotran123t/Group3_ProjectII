@@ -18,10 +18,10 @@ class Order_Product extends Model
     
     public function product()//primary key 
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class,'id_product');
     }
     public function order()//primary key 
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(Order::class,'id_order');
     }
 }

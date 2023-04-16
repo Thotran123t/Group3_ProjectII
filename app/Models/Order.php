@@ -14,10 +14,10 @@ class Order extends Model
         'date',
         'status',
     ];
-    public function cart_product(){//primary key
-        return $this->hasMany(Cart_Product::class);
+    public function order_product(){//primary key
+        return $this->hasMany(Order_Product::class,'id_order');
     }
     public function customer(){//primary key
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class,'id_customer');
     }
 }

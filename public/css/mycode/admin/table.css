@@ -1,0 +1,36 @@
+
+
+.main .layouttitle .body {
+    background: white;
+    border-radius: 5px;
+    padding:  20px;
+}
+.main .layouttitle::-webkit-scrollbar {
+    display: none;
+}
+.main .layouttitle .body h3{
+    padding:20px 0;
+}
+.main .layouttitle .body table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border:none;
+}
+.main .layouttitle .body table td,
+.main .layouttitle .body table th
+
+{
+    padding:15px
+}
+.main .layouttitle .body table form button{
+    background-color: white;
+    color:red;
+    border: none;
+    font-size: 17px;
+}
+@media screen and (max-width: 980px) {
+    .main .layouttitle .body {
+        width: 1050px;
+    }
+}
