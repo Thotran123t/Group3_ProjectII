@@ -16,4 +16,10 @@ class Capacity extends Model
     public function product(){//primary key
         return $this->hasMany(Product::class,'id_capacity');
     }
+    public function mackbook(){//primary key
+        return $this->hasMany(MacBook::class,'id_capacity');
+    }
+    public function appwatch(){//primary key
+        return $this->hasMany(AppWatch::class,'id_capacity');
+    }
 }

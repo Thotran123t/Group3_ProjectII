@@ -11,12 +11,23 @@ class Cart_Product extends Model
     protected $fillable = [
         'id_cart',
         'id_product',
+        'id_macbook',
+        'id_appwatch',
+
+        'id_category',
+        'quantity',
     ];
     
-    public function cart(){//primary key
+    public function cart(){//foreign key
         return $this->belongsTo(Cart::class,'id_cart');
     }
-    public function product(){//primary key
+    public function product(){//foreign key
         return $this->belongsTo(Product::class,'id_product');
+    }
+    public function macbook(){//foreign key
+        return $this->belongsTo(MacBook::class,'id_macbook');
+    }
+    public function appwatch(){//foreign key
+        return $this->belongsTo(AppWatch::class,'id_appwatch');
     }
 }

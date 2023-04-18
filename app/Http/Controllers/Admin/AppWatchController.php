@@ -3,18 +3,18 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AppWatch;
 use App\Models\Capacity;
 use App\Models\Category;
 use App\Models\Color;
 use App\Models\Image;
+use App\Models\Size;
 
-use App\Models\Product;
-use App\Models\Ram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-class ProductController extends Controller
+class AppWatchController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +22,8 @@ class ProductController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        $product = Product::all();
-        return view('admin/product/iphone/index', ['auth' => $auth , 'product' => $product]);
+        $product = AppWatch::all();
+        return view('admin/product/appwatch/index', ['auth' => $auth , 'product' => $product]);
     }
 
     /**
@@ -34,9 +34,9 @@ class ProductController extends Controller
         $auth = Auth::user();
         $categoty = Category::all();
         $color = Color::all();
-        $ram = Ram::all();
+        $size = Size::all();
         $capacity = Capacity::all();
-        return view('admin/product/iphone/create', ['auth' => $auth , 'category' => $categoty , 'color' => $color , 'ram' => $ram , 'capacity' => $capacity]);
+        return view('admin/product/appwatch/create', ['auth' => $auth , 'category' => $categoty , 'color' => $color , 'size' => $size , 'capacity' => $capacity]);
     }
 
     /**
@@ -44,11 +44,11 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
+        $product = new AppWatch();
         $product->name = $request->name;
         $product->id_category = $request->id_category;
         $product->id_color = $request->id_color;
-        $product->id_ram = $request->id_ram;
+        $product->id_size = $request->id_size;
         $product->id_capacity = $request->id_capacity;
         $product->price = $request->price;
         $product->quantity = $request->quantity;
@@ -59,21 +59,21 @@ class ProductController extends Controller
             $images = $request->file('images');
             foreach ($images as $image) {
                 $filename = time() .''. $image->getClientOriginalName();
-                $image->move('images/myimg/product_iphone', $filename);
+                $image->move('images/myimg/product_appwatch', $filename);
                 $productImage = new Image();
-                $productImage->id_product = $product->id;
+                $productImage->id_appwatch = $product->id;
                 $productImage->id_category = $request->id_category;
-                $productImage->path = 'images/myimg/product_iphone/' . $filename;
+                $productImage->path = 'images/myimg/product_appwatch/' . $filename;
                 $productImage->save();
             }
         }
-        return redirect('admin/product');
+        return redirect('admin/appwatch');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(AppWatch $appWatch)
     {
         //
     }
@@ -81,7 +81,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(AppWatch $appWatch)
     {
         //
     }
@@ -89,7 +89,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, AppWatch $appWatch)
     {
         //
     }
@@ -97,9 +97,9 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(AppWatch $appWatch)
     {
-        $product->delete();
-        return redirect('admin/product');
+        $appWatch->delete();
+        return redirect('admin/appwatch');
     }
 }

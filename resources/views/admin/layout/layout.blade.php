@@ -47,8 +47,8 @@
                 </li>
                 <div class="panel">
                     <a href="{{route('product.index')}}">List IPhone</a>
-                    <a >List MacBook</a>
-                    <a >List AppWatch</a>
+                    <a href="{{route('macbook.index')}}">List MacBook</a>
+                    <a href="{{route('appwatch.index')}}">List AppWatch</a>
                 </div>
 
 

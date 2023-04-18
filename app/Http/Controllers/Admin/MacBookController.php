@@ -3,18 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Capacity;
+use App\Models\MacBook;
+use App\Models\Ram;
 use App\Models\Category;
 use App\Models\Color;
+use App\Models\Capacity;
 use App\Models\Image;
-
-use App\Models\Product;
-use App\Models\Ram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-class ProductController extends Controller
+class MacBookController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,8 +21,8 @@ class ProductController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        $product = Product::all();
-        return view('admin/product/iphone/index', ['auth' => $auth , 'product' => $product]);
+        $product = MacBook::all();
+        return view('admin/product/macbook/index', ['auth' => $auth , 'product' => $product]);
     }
 
     /**
@@ -36,7 +35,7 @@ class ProductController extends Controller
         $color = Color::all();
         $ram = Ram::all();
         $capacity = Capacity::all();
-        return view('admin/product/iphone/create', ['auth' => $auth , 'category' => $categoty , 'color' => $color , 'ram' => $ram , 'capacity' => $capacity]);
+        return view('admin/product/macbook/create', ['auth' => $auth , 'category' => $categoty , 'color' => $color , 'ram' => $ram , 'capacity' => $capacity]);
     }
 
     /**
@@ -44,7 +43,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
+        $product = new MacBook();
         $product->name = $request->name;
         $product->id_category = $request->id_category;
         $product->id_color = $request->id_color;
@@ -59,21 +58,21 @@ class ProductController extends Controller
             $images = $request->file('images');
             foreach ($images as $image) {
                 $filename = time() .''. $image->getClientOriginalName();
-                $image->move('images/myimg/product_iphone', $filename);
+                $image->move('images/myimg/product_macbook', $filename);
                 $productImage = new Image();
-                $productImage->id_product = $product->id;
+                $productImage->id_macbook = $product->id;
                 $productImage->id_category = $request->id_category;
-                $productImage->path = 'images/myimg/product_iphone/' . $filename;
+                $productImage->path = 'images/myimg/product_macbook/' . $filename;
                 $productImage->save();
             }
         }
-        return redirect('admin/product');
+        return redirect('admin/macbook');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(MacBook $macBook)
     {
         //
     }
@@ -81,7 +80,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit(MacBook $macBook)
     {
         //
     }
@@ -89,7 +88,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $request, MacBook $macBook)
     {
         //
     }
@@ -97,9 +96,9 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(MacBook $macBook)
     {
-        $product->delete();
-        return redirect('admin/product');
+        $macBook->delete();
+        return redirect('admin/macbook');
     }
 }

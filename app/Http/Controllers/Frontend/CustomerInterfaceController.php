@@ -33,14 +33,11 @@ class CustomerInterfaceController extends Controller
     {
         return view('frontend/cart');
     }
-    public function sign_in()
+    public function myaccount()
     {
-        return view('frontend/sign_in');
+        return view('frontend/myaccount');
     }
-    public function sign_up()
-    {
-        return view('frontend/sign_up');
-    }
+  
     public function create_user(Request $request)
     {
         $customer = Customer::firstOrCreate(['email' => $request->email], [

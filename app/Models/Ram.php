@@ -16,6 +16,9 @@ class Ram extends Model
     public function product(){//primary key
         return $this->hasMany(Product::class,'id_ram');
     }
+    public function macbook(){//primary key
+        return $this->hasMany(MacBook::class,'id_ram');
+    }
 }
 
 

@@ -6,8 +6,9 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MacBookController;
+use App\Http\Controllers\Admin\AppWatchController;
 use App\Http\Controllers\Frontend\CustomerInterfaceController;
-
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Auth;
@@ -41,6 +42,9 @@ Route::prefix('admin')->middleware('checkUserRole')->group(function(){
 
     Route::Resource('/customer',CustomerController::class);
     Route::Resource('/product',ProductController::class);
+    Route::Resource('/macbook',MacBookController::class);
+    Route::Resource('/appwatch',AppWatchController::class);
+
     Route::Resource('/category',CategoryController::class);
     Route::Resource('/order',OrderController::class);
 
@@ -58,8 +62,7 @@ Route::prefix('frontend')->group(function(){
     Route::get('about', [CustomerInterfaceController::class,'about'])->name('about');
     Route::get('contact', [CustomerInterfaceController::class,'contact'])->name('contact');
     Route::get('cart', [CustomerInterfaceController::class,'cart'])->name('cart');
-    Route::get('sign_in', [CustomerInterfaceController::class,'sign_in'])->name('sign_in');
-    Route::get('sign_up', [CustomerInterfaceController::class,'sign_up'])->name('sign_up'); 
+    Route::get('myaccount', [CustomerInterfaceController::class,'myaccount'])->name('myaccount');
 
 
     Route::post('create_user', [CustomerInterfaceController::class,'create_user'])->name('create_user');

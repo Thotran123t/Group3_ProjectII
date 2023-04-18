@@ -9,13 +9,12 @@ class Cart extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'quantity',
         'id_customer',
     ];
     public function cart_product(){//primary key
         return $this->hasMany(Cart_Product::class,'id_cart');
     }
-    public function customer(){//primary key
+    public function customer(){//foreign key
         return $this->belongsTo(Customer::class,'id_customer');
     }
 

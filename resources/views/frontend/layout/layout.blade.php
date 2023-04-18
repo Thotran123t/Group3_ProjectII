@@ -15,19 +15,26 @@
     <header>
         <nav class="sidebar_header">
             <div class="left_sidebar_header">
-                <h1><b>IShopApple </b>Store</h1>
-                <a href="{{route('home')}}">Home</a>
-                <a href="{{route('shop')}}">Shop</a>
-                <a href="{{route('blog')}}">Blog</a>
-                <a href="{{route('about')}}">About</a>
-                <a href="{{route('contact')}}">Contact</a>
+                <h1>IShopApple</h1>
+                <a href="">Home</a>
+                <a href="">Shop</a>
+                <a href="">About</a>
+                <a href="">Contact</a>
             </div>
-            <div class="right-sidebar-header">
-                <input type="text">
-                <a href="{{route('cart')}}">cart</a>
-                <a href="{{route('sign_in')}}">sign in</a>
-                <a href="{{route('sign_up')}}">signup</a>
-                <a href="{{route('signout_user')}}">sign-out</a>
+            <div class="right_sidebar_header">
+                <div class="header_mobie">
+                    <img src="/public/images/myimg/logo-apple.png" alt="" width="30" height="40">
+                    <div class="search">
+                        <input type="text" placeholder="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+                <div class="header_link_right">
+                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href=""><i class="fa-solid fa-user"></i></a>
+                </div>
+
             </div>
         </nav>
     </header>

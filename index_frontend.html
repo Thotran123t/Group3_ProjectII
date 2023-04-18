@@ -10,20 +10,59 @@
         header .sidebar_header {
             display: flex;
             justify-content: space-around;
+            height: 60px;
+            align-items: center;
         }
 
         header .sidebar_header .left_sidebar_header h1 {
             display: inline;
         }
 
+        header .sidebar_header .left_sidebar_header>* {
+            color: black;
+            text-decoration: none;
+            padding: 0 10px;
+        }
+
         header .sidebar_header .right_sidebar_header {
             display: flex;
             align-items: center;
+            max-width: 255px;
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        header .sidebar_header .right_sidebar_header .header_mobie .search {
+            position: relative;
+        }
+
+        header .sidebar_header .right_sidebar_header .header_mobie .search i {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            border-left: 1px solid black;
+            padding: 0 5px;
+        }
+
+        header .sidebar_header .right_sidebar_header .header_mobie .search input {
+            outline: none;
+            border: none;
+            font-size: 16px;
+            max-width: 125px;
+            padding: 4px 50px 4px 5px;
+            border-bottom: 1px solid black;
         }
 
         header .sidebar_header .right_sidebar_header img,
-        header .sidebar_header .right_sidebar_header i {
+        header .sidebar_header .right_sidebar_header .fa-bars {
             display: none;
+            font-size: 30px;
+        }
+
+        header .sidebar_header .right_sidebar_header .header_link_right a {
+            color: black;
+            text-decoration: none;
+            padding:0 5px;
         }
 
         @media (max-width : 580px) {
@@ -54,18 +93,21 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-evenly;
+                padding: 0;
+                height: 60px;
             }
 
 
             header .sidebar_header .right_sidebar_header img,
-            header .sidebar_header .right_sidebar_header i {
+            header .sidebar_header .right_sidebar_header .fa-bars {
                 display: block;
             }
         }
+
         @media (max-width : 830px) {
             header .sidebar_header .left_sidebar_header h1 {
-            display: none;
-        }
+                display: none;
+            }
         }
     </style>
 </head>
@@ -74,7 +116,7 @@
     <header>
         <nav class="sidebar_header">
             <div class="left_sidebar_header">
-                <h1><b>IShopApple </b>Store</h1>
+                <h1>IShopApple</h1>
                 <a href="">Home</a>
                 <a href="">Shop</a>
                 <a href="">About</a>
@@ -83,13 +125,15 @@
             <div class="right_sidebar_header">
                 <div class="header_mobie">
                     <img src="/public/images/myimg/logo-apple.png" alt="" width="30" height="40">
-                    <input type="text">
-                    <i>Toggle</i>
+                    <div class="search">
+                        <input type="text" placeholder="search">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="header_link_right">
-                    <a href="">cart</a>
-                    <a href="">sign-in</a>
-                    <a href="">sign-up</a>
+                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href=""><i class="fa-solid fa-user"></i></a>
                 </div>
 
             </div>
@@ -101,6 +145,9 @@
     <footer>
         <h1>footer</h1>
     </footer>
+    <script src="/public/js/mycode/1aa4f49900.js"></script>
+
 </body>
+
 
 </html>

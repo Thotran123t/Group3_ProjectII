@@ -16,7 +16,7 @@
     <section class="body">
         <h2>Profile Information</h1>
             <p>Add information name , color , ram , capacity of your product.</p>
-            <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('appwatch.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <label for="first_name">Name</label><br>
@@ -32,7 +32,7 @@
                     </select>
                 </div> -->
                 <div>
-                    <input type="text" name="id_category" value="1" style="display:none">
+                    <input type="text" name="id_category" value="3" style="display:none">
                 </div>
                 <div>
                 <label for="id_color">Color</label><br>
@@ -43,9 +43,9 @@
                     </select>
                 </div>
                 <div>
-                <label for="id_ram">Ram</label><br>
-                    <select name="id_ram" id="">
-                        @foreach($ram as $item)
+                <label for="id_size">Size</label><br>
+                    <select name="id_size" id="">
+                        @foreach($size as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
                     </select>

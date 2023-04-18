@@ -9,14 +9,14 @@
 <div class="layouttitle">
     <section class="header">
         <div class="title">
-            <h1>Create New Iphone</h1>
+            <h1>Create New MacBook</h1>
             <span>IShopApple Admin Panel</span>
         </div>
     </section>
     <section class="body">
         <h2>Profile Information</h1>
             <p>Add information name , color , ram , capacity of your product.</p>
-            <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
+            <form action="{{route('macbook.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
                     <label for="first_name">Name</label><br>
@@ -32,7 +32,7 @@
                     </select>
                 </div> -->
                 <div>
-                    <input type="text" name="id_category" value="1" style="display:none">
+                    <input type="text" name="id_category" value="2" style="display:none">
                 </div>
                 <div>
                 <label for="id_color">Color</label><br>

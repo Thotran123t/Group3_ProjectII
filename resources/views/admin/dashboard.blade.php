@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{asset('/css/mycode/admin/dashboard.css')}}">
 @endsection
 @section('contents')
-<div class="wrapper">
+<!-- <div class="wrapper">
     <header>
         <h1>3 Column Responsive Layout</h1>
     </header>
@@ -39,8 +39,8 @@
             tempora? Voluptatibus, esse.</p>
     </footer>
 
-</div>
-<div class="wrapper">
+</div> -->
+<!-- <div class="wrapper">
     <header>
         <h1>3 Column Responsive Layout</h1>
     </header>
@@ -76,5 +76,5 @@
             tempora? Voluptatibus, esse.</p>
     </footer>
 
-</div>
+</div> -->
 @endsection
