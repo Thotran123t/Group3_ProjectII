@@ -22,7 +22,8 @@ class MacBookController extends Controller
     {
         $auth = Auth::user();
         $product = MacBook::all();
-        return view('admin/product/macbook/index', ['auth' => $auth , 'product' => $product]);
+        // return view('admin/product/macbook/index', ['auth' => $auth , 'product' => $product]);
+        return view('admin/product/macbook/index', compact('auth','product'));
     }
 
     /**
@@ -31,11 +32,12 @@ class MacBookController extends Controller
     public function create()
     {
         $auth = Auth::user();
-        $categoty = Category::all();
+        $category = Category::all();
         $color = Color::all();
         $ram = Ram::all();
         $capacity = Capacity::all();
-        return view('admin/product/macbook/create', ['auth' => $auth , 'category' => $categoty , 'color' => $color , 'ram' => $ram , 'capacity' => $capacity]);
+        // return view('admin/product/macbook/create', ['auth' => $auth , 'category' => $category , 'color' => $color , 'ram' => $ram , 'capacity' => $capacity]);
+        return view('admin/product/macbook/create', compact('auth','category','color','ram','capacity'));
     }
 
     /**
@@ -72,15 +74,15 @@ class MacBookController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(MacBook $macBook)
+    public function show(MacBook $macbook)
     {
-        //
+        return view('frontend/macbook_detail',compact('macbook'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(MacBook $macBook)
+    public function edit(MacBook $macbook)
     {
         //
     }
@@ -88,7 +90,7 @@ class MacBookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, MacBook $macBook)
+    public function update(Request $request, MacBook $macbook)
     {
         //
     }
@@ -96,9 +98,9 @@ class MacBookController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(MacBook $macBook)
+    public function destroy(MacBook $macbook)
     {
-        $macBook->delete();
+        $macbook->delete();
         return redirect('admin/macbook');
     }
 }

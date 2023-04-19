@@ -35,9 +35,7 @@
                     <td>{{$item->name}}</td>
                     <td>
                         @foreach($item->image as $image)
-                        @if($image->id_category == $item->id_category)
                         <img src="{{ asset($image->path) }}" alt="{{ $image->name }}" width="50" height="50">
-                        @endif
                         @endforeach
                     </td>
                     <td>{{$item->color->name}}</td>

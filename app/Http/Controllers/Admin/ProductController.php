@@ -23,7 +23,8 @@ class ProductController extends Controller
     {
         $auth = Auth::user();
         $product = Product::all();
-        return view('admin/product/iphone/index', ['auth' => $auth , 'product' => $product]);
+        // return view('admin/product/iphone/index', ['auth' => $auth , 'product' => $product]);
+        return view('admin/product/iphone/index', compact('auth','product'));
     }
 
     /**
@@ -32,11 +33,12 @@ class ProductController extends Controller
     public function create()
     {
         $auth = Auth::user();
-        $categoty = Category::all();
+        $category = Category::all();
         $color = Color::all();
         $ram = Ram::all();
         $capacity = Capacity::all();
-        return view('admin/product/iphone/create', ['auth' => $auth , 'category' => $categoty , 'color' => $color , 'ram' => $ram , 'capacity' => $capacity]);
+        // return view('admin/product/iphone/create', ['auth' => $auth , 'category' => $category , 'color' => $color , 'ram' => $ram , 'capacity' => $capacity]);
+        return view('admin/product/iphone/create', compact('auth','category','color','ram','capacity'));
     }
 
     /**
@@ -75,7 +77,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('frontend/product_detail',compact('product'));
+
     }
 
     /**

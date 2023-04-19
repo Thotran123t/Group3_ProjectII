@@ -23,7 +23,8 @@ class AppWatchController extends Controller
     {
         $auth = Auth::user();
         $product = AppWatch::all();
-        return view('admin/product/appwatch/index', ['auth' => $auth , 'product' => $product]);
+        // return view('admin/product/appwatch/index', ['auth' => $auth , 'product' => $product]);
+        return view('admin/product/appwatch/index', compact('auth','product'));
     }
 
     /**
@@ -32,11 +33,12 @@ class AppWatchController extends Controller
     public function create()
     {
         $auth = Auth::user();
-        $categoty = Category::all();
+        $category = Category::all();
         $color = Color::all();
         $size = Size::all();
         $capacity = Capacity::all();
-        return view('admin/product/appwatch/create', ['auth' => $auth , 'category' => $categoty , 'color' => $color , 'size' => $size , 'capacity' => $capacity]);
+        // return view('admin/product/appwatch/create', ['auth' => $auth , 'category' => $category , 'color' => $color , 'size' => $size , 'capacity' => $capacity]);
+        return view('admin/product/appwatch/create', compact('auth','category','color','size','capacity'));
     }
 
     /**
@@ -73,15 +75,15 @@ class AppWatchController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(AppWatch $appWatch)
+    public function show(AppWatch $appwatch)
     {
-        //
+        return view('frontend/appwatch_detail',compact('appwatch'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(AppWatch $appWatch)
+    public function edit(AppWatch $appwatch)
     {
         //
     }
@@ -89,7 +91,7 @@ class AppWatchController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, AppWatch $appWatch)
+    public function update(Request $request, AppWatch $appwatch)
     {
         //
     }
@@ -97,9 +99,9 @@ class AppWatchController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(AppWatch $appWatch)
+    public function destroy(AppWatch $appwatch)
     {
-        $appWatch->delete();
+        $appwatch->delete();
         return redirect('admin/appwatch');
     }
 }

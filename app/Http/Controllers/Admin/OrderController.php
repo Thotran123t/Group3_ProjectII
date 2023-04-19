@@ -15,7 +15,8 @@ class OrderController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        return view('admin/order/index', ['auth' => $auth]);
+        // return view('admin/order/index', ['auth' => $auth]);
+        return view('admin/order/index', compact('auth'));
     }
 
     /**

@@ -58,15 +58,27 @@ Route::prefix('admin')->middleware('checkUserRole')->group(function(){
 Route::prefix('frontend')->group(function(){
     Route::get('home', [CustomerInterfaceController::class,'home'])->name('home');
     Route::get('shop', [CustomerInterfaceController::class,'shop'])->name('shop');
-    Route::get('blog', [CustomerInterfaceController::class,'blog'])->name('blog');
     Route::get('about', [CustomerInterfaceController::class,'about'])->name('about');
     Route::get('contact', [CustomerInterfaceController::class,'contact'])->name('contact');
     Route::get('cart', [CustomerInterfaceController::class,'cart'])->name('cart');
     Route::get('myaccount', [CustomerInterfaceController::class,'myaccount'])->name('myaccount');
+    Route::get('profile', [CustomerInterfaceController::class,'profile'])->name('profile');
 
 
     Route::post('create_user', [CustomerInterfaceController::class,'create_user'])->name('create_user');
     Route::post('signin_user', [CustomerInterfaceController::class,'signin_user'])->name('signin_user');
     Route::get('signout_user', [CustomerInterfaceController::class,'signout_user'])->name('signout_user');
     Route::get('checkout', [CustomerInterfaceController::class,'checkout'])->name('checkout');
+
+    ////////////////////////////////////
+    Route::Resource('/product',ProductController::class);
+    Route::Resource('/macbook',MacBookController::class);
+    Route::Resource('/appwatch',AppWatchController::class);
+
+    Route::get('product_detail', [CustomerInterfaceController::class,'product_detail'])->name('product_detail');
+    Route::post('add_to_cart', [CustomerInterfaceController::class,'add_to_cart'])->name('add_to_cart');
+    Route::delete('remove_cart/{index}', [CustomerInterfaceController::class,'remove_cart'])->name('remove_cart');
+
+    Route::get('view_cart', [CustomerInterfaceController::class,'view_cart'])->name('view_cart');
+
 });

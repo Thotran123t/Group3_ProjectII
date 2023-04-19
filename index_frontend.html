@@ -27,7 +27,7 @@
         header .sidebar_header .right_sidebar_header {
             display: flex;
             align-items: center;
-            max-width: 255px;
+            max-width: 275px;
             width: 100%;
             justify-content: space-between;
         }
@@ -59,13 +59,17 @@
             font-size: 30px;
         }
 
-        header .sidebar_header .right_sidebar_header .header_link_right a {
-            color: black;
+        header .sidebar_header .right_sidebar_header a {
+            background-color: #ff416b;
+            padding: 5px 10px;
+            border-radius: 5px;
             text-decoration: none;
-            padding:0 5px;
+            color: #fff;
         }
 
-        @media (max-width : 580px) {
+
+
+        @media (max-width : 600px) {
             header .sidebar_header {
                 justify-content: start;
                 height: 100%;
@@ -78,11 +82,9 @@
                 right: -100%;
             }
 
-            header .sidebar_header .left_sidebar_header,
-            header .sidebar_header .right_sidebar_header .header_link_right {
+            header .sidebar_header .left_sidebar_header {
                 display: flex;
                 flex-direction: column;
-
             }
 
             header .sidebar_header .right_sidebar_header .header_mobie {
@@ -100,8 +102,10 @@
 
             header .sidebar_header .right_sidebar_header img,
             header .sidebar_header .right_sidebar_header .fa-bars {
+                padding-top: 10px;
                 display: block;
             }
+
         }
 
         @media (max-width : 830px) {
@@ -121,6 +125,7 @@
                 <a href="">Shop</a>
                 <a href="">About</a>
                 <a href="">Contact</a>
+                <a href="">Cart</a>
             </div>
             <div class="right_sidebar_header">
                 <div class="header_mobie">
@@ -131,10 +136,7 @@
                     </div>
                     <i class="fa-solid fa-bars"></i>
                 </div>
-                <div class="header_link_right">
-                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                    <a href=""><i class="fa-solid fa-user"></i></a>
-                </div>
+                <a href="">Account</a>
 
             </div>
         </nav>

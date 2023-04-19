@@ -16,7 +16,8 @@ class CategoryController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        return view('admin/category/index', ['auth' => $auth]);
+        // return view('admin/category/index', ['auth' => $auth]);
+        return view('admin/category/index', compact('auth'));
     }
 
     /**
@@ -25,7 +26,8 @@ class CategoryController extends Controller
     public function create()
     {
         $auth = Auth::user();
-        return view('admin/category/create', ['auth' => $auth]);
+        // return view('admin/category/create', ['auth' => $auth]);
+        return view('admin/category/create', compact('auth'));
     }
 
     /**

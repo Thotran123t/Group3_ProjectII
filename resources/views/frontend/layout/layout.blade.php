@@ -16,24 +16,22 @@
         <nav class="sidebar_header">
             <div class="left_sidebar_header">
                 <h1>IShopApple</h1>
-                <a href="">Home</a>
-                <a href="">Shop</a>
-                <a href="">About</a>
-                <a href="">Contact</a>
+                <a href="{{route('home')}}">Home</a>
+                <a href="{{route('shop')}}">Shop</a>
+                <a href="{{route('about')}}">About</a>
+                <a href="{{route('contact')}}">Contact</a>
+                <a href="{{route('cart')}}">Cart</a>
             </div>
             <div class="right_sidebar_header">
                 <div class="header_mobie">
-                    <img src="/public/images/myimg/logo-apple.png" alt="" width="30" height="40">
+                    <img class="logo" src="{{asset('/images/myimg/logo-apple.png')}}" alt="">
                     <div class="search">
                         <input type="text" placeholder="search">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
                     <i class="fa-solid fa-bars"></i>
                 </div>
-                <div class="header_link_right">
-                    <a href=""><i class="fa-solid fa-cart-shopping"></i></a>
-                    <a href=""><i class="fa-solid fa-user"></i></a>
-                </div>
+                <a href="{{route('myaccount')}}">Account</a>
 
             </div>
         </nav>
@@ -45,7 +43,8 @@
         <h1>footer</h1>
     </footer>
 </body>
-
+<script src="{{asset('/js/mycode/1aa4f49900.js')}}"></script>
+    <script src="{{asset('/js/mycode/jquery-3.6.4.min.js')}}"></script>
 @yield('myjs')
 
 </html>

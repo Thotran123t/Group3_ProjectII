@@ -16,7 +16,8 @@ class CustomerController extends Controller
     {
         $auth = Auth::user();
         $customer = Customer::all();
-        return view('admin/customer/index', ['auth' => $auth ,'customer' => $customer]);
+        // return view('admin/customer/index', ['auth' => $auth ,'customer' => $customer]);
+        return view('admin/customer/index', compact('auth','customer'));
     }
 
     /**
@@ -25,7 +26,8 @@ class CustomerController extends Controller
     public function create()
     {
         $auth = Auth::user();
-        return view('admin/customer/create', ['auth' => $auth]);
+        // return view('admin/customer/create', ['auth' => $auth]);
+        return view('admin/customer/create', compact('auth'));
     }
 
     /**

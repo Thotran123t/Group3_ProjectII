@@ -28,7 +28,8 @@ class HomeController extends Controller
     public function dashboard()
     {
         $auth = Auth::user();
-        return view('admin/dashboard', ['auth' => $auth]);
+        // return view('admin/dashboard', ['auth' => $auth]);
+        return view('admin/dashboard', compact('auth'));
     }
 
 
@@ -45,7 +46,8 @@ class HomeController extends Controller
         $auth = Auth::user();
         $createdAt = $auth->created_at->format('d/m/Y H:i:s');
         $updatedAt = $auth->updated_at->format('d/m/Y H:i:s');
-        return view('admin/editprofile', ['auth' => $auth, 'createdAt' => $createdAt, 'updatedAt' => $updatedAt]);
+        // return view('admin/editprofile', ['auth' => $auth, 'createdAt' => $createdAt, 'updatedAt' => $updatedAt]);
+        return view('admin/editprofile', compact('auth','createdAt','updatedAt'));
     }
     
     public function logout()
