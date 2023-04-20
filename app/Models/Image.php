@@ -10,25 +10,19 @@ class Image extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_product',
-        'id_macbook',
-        'id_appwatch',
         'id_category',
+        'id_color',
         'path',
     ];
 
    
-    public function product()
+    public function category()
     {
-        return $this->belongsTo(Product::class,'id_product');
+        return $this->belongsTo(Category::class,'id_category');
     }
-    public function macbook()
+    public function color()
     {
-        return $this->belongsTo(MacBook::class,'id_macbook');
+        return $this->belongsTo(Color::class,'id_color');
     }
    
-    public function appwatch()
-    {
-        return $this->belongsTo(AppWatch::class,'id_appwatch');
-    }
 }

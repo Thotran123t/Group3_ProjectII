@@ -31,9 +31,7 @@
                         @endforeach
                     </select>
                 </div> -->
-                <div>
-                    <input type="text" name="id_category" value="3" style="display:none">
-                </div>
+               
                 <div>
                 <label for="id_color">Color</label><br>
                     <select name="id_color" id="">

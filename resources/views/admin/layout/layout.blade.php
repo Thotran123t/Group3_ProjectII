@@ -62,6 +62,16 @@
                 </div>
 
 
+                <li class="accordion">
+                    <i class="fa-solid fa-image"></i>
+                     <span>Image</span>
+                </li>
+                <div class="panel">
+                    <a href="{{route('image.index')}}">List Image</a>
+                    <a href="{{route('image.create')}}">Create New Image</a>
+                </div>
+
+
                 <li>
                     <a href="{{route('order.index')}}">
                         <i class="fa fa-sort"></i>

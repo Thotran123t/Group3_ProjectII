@@ -14,6 +14,12 @@ class Category extends Model
         'image',
     ];
 
+    public function comment(){//primary key
+        return $this->hasMany(Comment::class,'id_category');
+    }
+    public function images(){//primary key
+        return $this->hasMany(Image::class,'id_category');
+    }
     public function product(){//primary key
         return $this->hasMany(Product::class,'id_category');
     }
@@ -23,4 +29,5 @@ class Category extends Model
     public function appwatch(){//primary key
         return $this->hasMany(AppWatch::class,'id_category');
     }
+  
 }

@@ -34,9 +34,7 @@
                     <td>{{$item->id}}</td>
                     <td>{{$item->name}}</td>
                     <td>
-                        @foreach($item->image as $image)
-                        <img src="{{ asset($image->path) }}" alt="{{ $image->name }}" width="50" height="50">
-                        @endforeach
+                        <img src="{{ asset($item->image) }}" alt=""  style="max-width:10%; height: auto">
                     </td>
                     <td>{{$item->color->name}}</td>
                     <td>{{$item->ram->name}}</td>

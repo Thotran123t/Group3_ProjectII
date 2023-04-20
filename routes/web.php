@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\MacBookController;
 use App\Http\Controllers\Admin\AppWatchController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Frontend\CustomerInterfaceController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,6 +47,7 @@ Route::prefix('admin')->middleware('checkUserRole')->group(function(){
     Route::Resource('/appwatch',AppWatchController::class);
 
     Route::Resource('/category',CategoryController::class);
+    Route::Resource('/image',ImageController::class);
     Route::Resource('/order',OrderController::class);
 
     Route::get('dashboard', [HomeController::class,'dashboard'])->name('dashboard');
@@ -71,14 +73,16 @@ Route::prefix('frontend')->group(function(){
     Route::get('checkout', [CustomerInterfaceController::class,'checkout'])->name('checkout');
 
     ////////////////////////////////////
-    Route::Resource('/product',ProductController::class);
-    Route::Resource('/macbook',MacBookController::class);
-    Route::Resource('/appwatch',AppWatchController::class);
+    Route::get('product_detail/{id}', [CustomerInterfaceController::class, 'product_detail'])->name('product_detail');
+    Route::get('macbook_detail/{id}', [CustomerInterfaceController::class, 'macbook_detail'])->name('macbook_detail');
 
-    Route::get('product_detail', [CustomerInterfaceController::class,'product_detail'])->name('product_detail');
+    Route::get('category_detail/{cateid}/{catename}', [CustomerInterfaceController::class, 'category_detail'])->name('category_detail');
+
     Route::post('add_to_cart', [CustomerInterfaceController::class,'add_to_cart'])->name('add_to_cart');
     Route::delete('remove_cart/{index}', [CustomerInterfaceController::class,'remove_cart'])->name('remove_cart');
 
+
+    Route::get('delete_cart', [CustomerInterfaceController::class,'delete_cart'])->name('delete_cart');
     Route::get('view_cart', [CustomerInterfaceController::class,'view_cart'])->name('view_cart');
 
 });

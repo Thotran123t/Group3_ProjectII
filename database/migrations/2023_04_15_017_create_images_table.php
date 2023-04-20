@@ -13,15 +13,12 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_product')->nullable();
-            $table->unsignedBigInteger('id_macbook')->nullable();
-            $table->unsignedBigInteger('id_appwatch')->nullable();
-            $table->integer('id_category');
+            $table->unsignedBigInteger('id_category')->nullable();
+            $table->unsignedBigInteger('id_color')->nullable();
             $table->string('path');
             $table->timestamps();
-            $table->foreign('id_product')->references('id')->on('products')->onDelete('cascade');
-            $table->foreign('id_macbook')->references('id')->on('mac_books')->onDelete('cascade');
-            $table->foreign('id_appwatch')->references('id')->on('app_watches')->onDelete('cascade');
+            $table->foreign('id_category')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('id_color')->references('id')->on('colors')->onDelete('cascade');
         });
     }
 

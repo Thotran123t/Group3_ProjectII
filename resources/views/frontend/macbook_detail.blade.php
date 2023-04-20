@@ -1,56 +1,38 @@
 @extends('frontend/layout/layout')
 @section('mycss')
 @endsection
-<style>
-    img {
-        width: 250px;
-        height: 250px;
-    }
-</style>
+
 
 
 @section('contents')
-<h1>macbook detail</h1>
-@foreach($macbook->image as $image)
-<img src="{{ asset($image->path) }}" alt="">
+<style>
+    img {
+        max-width: 250px;
+        height: auto;
+    }
+</style>
+
+@foreach($macbook->category->images as $image)
+@if($image->id_color == $macbook->id_color)
+<img src="{{asset($image->path)}}" alt="">
+@endif
 @endforeach
-<h1>{{$macbook->name}}</h1>
-<h3>{{$macbook->price}}</h3>
-<input type="number" class="quantity" max="{{$macbook->quantity}}">
-<select name="color" id="">
-    <option value="1">red</option>
-    <option value="2">blue</option>
-    <option value="3">black</option>
-</select>
-<select name="capacity" id="">
-    <option value="1">32gb</option>
-    <option value="2">128gb</option>
-    <option value="3">254gb</option>
-</select>
 
-<button class="addtocart">Add To cart</button>
+<h1>Name : {{$macbook->name}}</h1>
+<h3>Color : {{$macbook->color->name}}</h3>
+<h3>Ram : {{$macbook->ram->name}}</h3>
+<h3>Capacity : {{$macbook->capacity->name}}</h3>
+<h3>Price : {{$macbook->price}}</h3>
+<input class="quantity" type="number" max="{{$macbook->quantity}}" >
+<button class="addtocart">Add To Cart</button>
 
-
-<h1>Description</h1>
-<p>{{$macbook->description}}</p>
-
-
-<h1>Review</h1>
-@foreach($macbook->comment as $comment)
-<div>
-    <h3>{{$comment->customer->first_name.' '.$comment->customer->last_name}}</h3>
-    <p>{{$comment->content}}</p>
-</div>
-<h1>Add Your Review</h1>
-
-@endforeach
 @endsection
 
 
 @section('myjs')
 <script>
-    const pid = "{{ $macbook->id}}";
-    const cate = "{{ $macbook->id_category}}";
+    const id = "{{$macbook->id}}";
+    const cate = "{{$macbook->category->name}}";
     const urladd = "{{route('add_to_cart')}}";
     $(document).ready(function() {
         $('.addtocart').click(function(e) {
@@ -61,9 +43,9 @@
                 type: 'post',
                 url: urladd,
                 data: {
-                    id: pid,
+                    id: id,
                     quantity: quantity,
-                    category:cate,
+                    category: cate,
                     _token: '{{ csrf_token() }}'
                 },
                 success: function(data) {

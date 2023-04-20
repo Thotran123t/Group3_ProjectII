@@ -6,8 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Models\CartItem;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\Color;
+
 use App\Models\MacBook;
 use App\Models\AppWatch;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Hash;
@@ -17,14 +20,18 @@ class CustomerInterfaceController extends Controller
 {
     public function home()
     {
-        return view('frontend/home');
+        $category = Category::all();
+        $product = Product::all();
+        $macbook = MacBook::all();
+        $appwatch = AppWatch::all();
+        return view('frontend/home', compact('category', 'product', 'macbook', 'appwatch'));
     }
     public function shop()
     {
         $product = Product::all();
         $macbook = MacBook::all();
-        $appwatch = AppWatch::all();
-        return view('frontend/shop', compact('product', 'macbook', 'appwatch'));
+        // $appwatch = AppWatch::all();
+        return view('frontend/shop', compact('product', 'macbook'));
     }
     public function about()
     {
@@ -35,14 +42,7 @@ class CustomerInterfaceController extends Controller
         return view('frontend/contact');
     }
 
-    public function cart(Request $request)
-    {
-        if ($request->session()->has('cart')) {
-            $cart = $request->session()->get('cart');
-            return view('frontend/cart', compact('cart'));
-        }
-        return view('frontend/cart');
-    }
+    
 
     public function myaccount()
     {
@@ -103,10 +103,24 @@ class CustomerInterfaceController extends Controller
             return view('frontend/myaccount');
         }
     }
+
+
+
+    public function cart(Request $request)
+    {
+        if ($request->session()->has('cart')) {
+            $cart = $request->session()->get('cart');
+            return view('frontend/cart', compact('cart'));
+        }
+        return view('frontend/cart');
+    }
+
+    
     public function checkout(Request $request)
     {
         if (session()->has('user')) {
-            return view('frontend/checkout');
+            $user = $request->session()->get('user');
+            return view('frontend/checkout',compact('user'));
         } else {
             return view('frontend/myaccount');
         }
@@ -116,17 +130,70 @@ class CustomerInterfaceController extends Controller
 
 
     ///////////////////
+    public function product_detail($id)
+    {
+        $product = Product::find($id);
+        return view('frontend/product_detail', compact('product'));
+    }
+    public function macbook_detail($id)
+    {
+        $macbook = MacBook::find($id);
+        return view('frontend/macbook_detail', compact('macbook'));
+    }
+
+    public function category_detail($cateid, $catename)
+    {
+        $category = Category::find($cateid);
+        $images = $category->images; // Lấy tất cả các bản ghi từ bảng images có category_id là 1
+        if (strpos($catename, 'Iphone') !== false) {
+            $product = $category->product;
+            return view('frontend/category_product_detail', compact('images', 'catename', 'cateid', 'product'));
+        } elseif (strpos($catename, 'MacBook') !== false) {
+            return view('frontend/category_macbook_detail');
+        } elseif (strpos($catename, 'AppWatch') !== false) {
+            return view('frontend/category_appwatch_detail');
+        }
+    }
+
+
+
+
     public function add_to_cart(Request $request)
     {
-        if ($request->category == 1) {
-            $product = Product::find($request->id);
-        } elseif ($request->category == 2) {
+
+
+
+        if (strpos($request->category, 'Iphone') !== false) {
+            if (isset($request->color) && isset($request->ram) && isset($request->capacity)) {
+                // return response()->json(['info' => 'bycate']);
+
+                $products = Product::where('id_color', $request->color)
+                    ->where('id_ram', $request->ram)
+                    ->where('id_capacity', $request->capacity)
+                    ->where('id_category', $request->category_id)
+                    ->get();
+                if (count($products) == 0) {
+                    return response()->json(['info' => 'san pham dang het hang']);
+                }
+                else{
+                    $product = $products->first();
+                }
+
+            } else {
+                $product = Product::find($request->id);
+
+            }
+        } elseif (strpos($request->category, 'MacBook') !== false) {
             $product = MacBook::find($request->id);
-        } elseif ($request->category == 3) {
+        } elseif (strpos($request->category, 'AppWatch') !== false) {
             $product = AppWatch::find($request->id);
         }
+
+
         $quantity = $request->quantity;
         $cartItem = new CartItem($product, $quantity);
+
+
         $cart = [];
         if ($request->session()->has('cart')) {
             $cart = $request->session()->get('cart');
@@ -136,7 +203,7 @@ class CustomerInterfaceController extends Controller
                     // Nếu sản phẩm đã tồn tại, cộng dồn quantity vào sản phẩm đó
                     $item->quantity += $cartItem->quantity;
                     $request->session()->put('cart', $cart);
-                    return;
+                    return response()->json(['info' => 'Add To Cart Successful !']);
                 }
             }
         }
@@ -144,14 +211,13 @@ class CustomerInterfaceController extends Controller
         $cart[] = $cartItem;
         //luu lai bien session
         $request->session()->put('cart', $cart);
+        return response()->json(['info' => 'Add To Cart Successful !']);
+
     }
 
 
 
-    public function view_cart(Request $request)
-    {
-        dd($request->session()->get('cart'));
-    }
+    
 
 
     public function remove_cart(Request $request, $index)
@@ -163,4 +229,17 @@ class CustomerInterfaceController extends Controller
         }
         return redirect('frontend/cart');
     }
+
+
+    public function view_cart(Request $request)
+    {
+        dd($request->session()->get('cart'));
+    }
+
+    public function delete_cart(Request $request)
+    {
+        $request->session()->forget('cart');
+    }
+
+   
 }

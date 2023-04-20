@@ -21,9 +21,9 @@ class MacBookController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        $product = MacBook::all();
+        $macbook = MacBook::all();
         // return view('admin/product/macbook/index', ['auth' => $auth , 'product' => $product]);
-        return view('admin/product/macbook/index', compact('auth','product'));
+        return view('admin/product/macbook/index', compact('auth','macbook'));
     }
 
     /**
@@ -45,29 +45,20 @@ class MacBookController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new MacBook();
-        $product->name = $request->name;
-        $product->id_category = $request->id_category;
-        $product->id_color = $request->id_color;
-        $product->id_ram = $request->id_ram;
-        $product->id_capacity = $request->id_capacity;
-        $product->price = $request->price;
-        $product->quantity = $request->quantity;
-        $product->description = $request->description;
-        $product->save();
-        // Lưu các ảnh vào bảng product_images
-        if ($request->hasFile('images')) {
-            $images = $request->file('images');
-            foreach ($images as $image) {
-                $filename = time() .''. $image->getClientOriginalName();
-                $image->move('images/myimg/product_macbook', $filename);
-                $productImage = new Image();
-                $productImage->id_macbook = $product->id;
-                $productImage->id_category = $request->id_category;
-                $productImage->path = 'images/myimg/product_macbook/' . $filename;
-                $productImage->save();
+        $item = $request->all();
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $ext = $file->getClientOriginalExtension();
+            if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg') {
+                return redirect('/admin/macbook/create');
             }
+            $imageFile = $file->getClientOriginalName();
+            $file->move('images/myimg/product_macbook',$imageFile);
+        } else {
+            $imageFile = null;
         }
+        $item['image'] = 'images/myimg/product_macbook/'.$imageFile;
+        MacBook::create($item);
         return redirect('admin/macbook');
     }
 
@@ -76,7 +67,6 @@ class MacBookController extends Controller
      */
     public function show(MacBook $macbook)
     {
-        return view('frontend/macbook_detail',compact('macbook'));
     }
 
     /**

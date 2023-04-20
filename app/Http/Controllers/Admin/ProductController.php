@@ -46,29 +46,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product();
-        $product->name = $request->name;
-        $product->id_category = $request->id_category;
-        $product->id_color = $request->id_color;
-        $product->id_ram = $request->id_ram;
-        $product->id_capacity = $request->id_capacity;
-        $product->price = $request->price;
-        $product->quantity = $request->quantity;
-        $product->description = $request->description;
-        $product->save();
-        // Lưu các ảnh vào bảng product_images
-        if ($request->hasFile('images')) {
-            $images = $request->file('images');
-            foreach ($images as $image) {
-                $filename = time() .''. $image->getClientOriginalName();
-                $image->move('images/myimg/product_iphone', $filename);
-                $productImage = new Image();
-                $productImage->id_product = $product->id;
-                $productImage->id_category = $request->id_category;
-                $productImage->path = 'images/myimg/product_iphone/' . $filename;
-                $productImage->save();
+        $item = $request->all();
+        if ($request->hasFile('photo')) {
+            $file = $request->file('photo');
+            $ext = $file->getClientOriginalExtension();
+            if ($ext != 'jpg' && $ext != 'png' && $ext != 'jpeg') {
+                return redirect('/admin/product/create');
             }
+            $imageFile = $file->getClientOriginalName();
+            $file->move('images/myimg/product_iphone',$imageFile);
+        } else {
+            $imageFile = null;
         }
+        $item['image'] = 'images/myimg/product_iphone/'.$imageFile;
+        Product::create($item);
         return redirect('admin/product');
     }
 
@@ -77,7 +68,6 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('frontend/product_detail',compact('product'));
 
     }
 

@@ -4,6 +4,7 @@
     background: white;
     border-radius: 5px;
     padding:  20px;
+    overflow: auto;
 }
 .main .layouttitle::-webkit-scrollbar {
     display: none;
@@ -28,9 +29,4 @@
     color:red;
     border: none;
     font-size: 17px;
-}
-@media screen and (max-width: 980px) {
-    .main .layouttitle .body {
-        width: 1050px;
-    }
 }

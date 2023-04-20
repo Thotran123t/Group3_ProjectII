@@ -17,7 +17,9 @@ return new class extends Migration
             $table->unsignedBigInteger('id_category'); 
             $table->unsignedBigInteger('id_ram'); 
             $table->unsignedBigInteger('id_color'); 
-            $table->unsignedBigInteger('id_capacity'); 
+            $table->unsignedBigInteger('id_capacity');
+            $table->string('image')->nullable();
+ 
             $table->integer('price');
             $table->integer('quantity');
             $table->text('description');

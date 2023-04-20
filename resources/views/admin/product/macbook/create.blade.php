@@ -15,7 +15,7 @@
     </section>
     <section class="body">
         <h2>Profile Information</h1>
-            <p>Add information name , color , ram , capacity of your product.</p>
+            <p>Add information name , category , color , ram , capacity , price , quantity of your MacBook.</p>
             <form action="{{route('macbook.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div>
@@ -23,17 +23,15 @@
                     <input type="text" name="name" id="name" required>
                 </div>
                 
-                <!-- <div>
+                <div>
                     <label for="id_category">Category</label><br>
                     <select name="id_category" id="">
                         @foreach($category as $item)
                         <option value="{{$item->id}}">{{$item->name}}</option>
                         @endforeach
                     </select>
-                </div> -->
-                <div>
-                    <input type="text" name="id_category" value="2" style="display:none">
                 </div>
+            
                 <div>
                 <label for="id_color">Color</label><br>
                     <select name="id_color" id="">
@@ -72,10 +70,10 @@
                     <textarea name="description" id="" cols="50" rows="10"></textarea>
                 </div>
                 <div>
-                    <label for="images">Image</label><br>
-                    <input type="file" name="images[]" multiple id="images" required>
+                    <label for="image">Image</label><br>
+                    <input type="file" name="photo"  id="image" required>
                 </div>
-                <button id="sign_up">Add</button>
+                <button type="submit">Add</button>
             </form>
     </section>
 

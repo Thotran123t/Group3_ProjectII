@@ -15,18 +15,12 @@ class Product extends Model
         'id_ram',
         'id_color',
         'id_capacity',
+        'image',
         'price',
         'quantity',
         'description',
     ];
-    public function image()//primary key 
-    {
-        return $this->hasMany(Image::class,'id_product');
-    }
-    public function comment()//primary key 
-    {
-        return $this->hasMany(Comment::class,'id_product');
-    }
+   
     public function cart_product()//primary key 
     {
         return $this->hasMany(Cart_Product::class,'id_product');

@@ -1,73 +1,55 @@
 @extends('frontend/layout/layout')
 @section('mycss')
 @endsection
-<style>
-    img {
-        width: 250px;
-        height: 250px;
-    }
-</style>
+
 
 
 @section('contents')
-<h1>prodcut detail</h1>
-@foreach($product->image as $image)
-<img src="{{ asset($image->path) }}" alt="">
+<style>
+    img {
+        max-width: 250px;
+        height: auto;
+    }
+</style>
+@foreach($product->category->images as $image)
+@if($image->id_color == $product->id_color)
+<img src="{{asset($image->path)}}" alt="">
+@endif
 @endforeach
-<h1>{{$product->name}}</h1>
-<h3>{{$product->price}}</h3>
-<input type="number" class="quantity" max="{{$product->quantity}}">
-<select name="color" id="">
-    <option value="1">red</option>
-    <option value="2">blue</option>
-    <option value="3">black</option>
-</select>
-<select name="capacity" id="">
-    <option value="1">32gb</option>
-    <option value="2">128gb</option>
-    <option value="3">254gb</option>
-</select>
 
-<button class="addtocart">Add To cart</button>
+<h1>Name : {{$product->name}}</h1>
+<h3>Color : {{$product->color->name}}</h3>
+<h3>Ram : {{$product->ram->name}}</h3>
+<h3>Capacity : {{$product->capacity->name}}</h3>
+<h3>Price : {{$product->price}}</h3>
+<input class="quantity" type="number" max="{{$product->quantity}}">
+<button class="addtocart">Add To Cart</button>
 
-
-<h1>Description</h1>
-<p>{{$product->description}}</p>
-
-
-<h1>Review</h1>
-@foreach($product->comment as $comment)
-<div>
-    <h3>{{$comment->customer->first_name.' '.$comment->customer->last_name}}</h3>
-    <p>{{$comment->content}}</p>
-</div>
-<h1>Add Your Review</h1>
-
-@endforeach
 @endsection
 
 
 @section('myjs')
 <script>
-    const pid = "{{ $product->id}}";
-    const cate = "{{ $product->id_category}}";
+    const id = "{{$product->id}}";
+    const cate = "{{$product->category->name}}";
     const urladd = "{{route('add_to_cart')}}";
     $(document).ready(function() {
         $('.addtocart').click(function(e) {
             e.preventDefault();
             let quantity = $('.quantity').val();
-
             $.ajax({
                 type: 'post',
                 url: urladd,
                 data: {
-                    id: pid,
+                    id: id,
                     quantity: quantity,
-                    category:cate,
+                    category: cate,
                     _token: '{{ csrf_token() }}'
                 },
                 success: function(data) {
-                    alert('add to cart successfully!');
+                    // alert('add to cart successfully !');
+                    alert(data.info);
+
                 }
             });
 

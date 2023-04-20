@@ -29,14 +29,12 @@
                 <th><a href="{{route('macbook.create')}}" style="color:blue"><i class="fa-solid fa-plus"></i></a></th>
             </thead>
             <tbody>
-                @foreach($product as $item)
+                @foreach($macbook as $item)
                 <tr>
                     <td>{{$item->id}}</td>
                     <td>{{$item->name}}</td>
                     <td>
-                        @foreach($item->image as $image)
-                        <img src="{{ asset($image->path) }}" alt="{{ $image->name }}" width="50" height="50">
-                        @endforeach
+                        <img src="{{ asset($item->image) }}" alt=""  style="max-width:10%; height: auto">
                     </td>
                     <td>{{$item->color->name}}</td>
                     <td>{{$item->ram->name}}</td>
