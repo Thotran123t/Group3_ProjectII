@@ -10,7 +10,8 @@
     }
 </style>
 <h1>checkout page</h1>
-<div class="flex">
+<div >
+    <form class="flex" action="" >
     <div class="infouser">
         <h1>Billing Details</h1>
 
@@ -27,8 +28,21 @@
     </div>
 
     <div class="infopro">
-        <h2>hello</h2>
+        <h1>your order</h1>
+        @php
+        $total = 0;
+        @endphp
+        <h3>product</h3>
+        @foreach($cart as $item)
+        <p>{{$item->product->name}} X {{$item->quantity}} : ${{$item->product->price*$item->quantity}}</p>
+        @php
+        $total += $item->product->price*$item->quantity;
+        @endphp
+        @endforeach
+        <h2>Total : ${{$total}}</h2>
+        <button>place order</button>
     </div>
+    </form>
 </div>
 
 

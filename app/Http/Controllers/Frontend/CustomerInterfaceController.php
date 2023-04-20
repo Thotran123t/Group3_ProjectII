@@ -42,7 +42,7 @@ class CustomerInterfaceController extends Controller
         return view('frontend/contact');
     }
 
-    
+
 
     public function myaccount()
     {
@@ -115,12 +115,15 @@ class CustomerInterfaceController extends Controller
         return view('frontend/cart');
     }
 
-    
+
     public function checkout(Request $request)
     {
         if (session()->has('user')) {
             $user = $request->session()->get('user');
-            return view('frontend/checkout',compact('user'));
+            if ($request->session()->has('cart')) {
+                $cart = $request->session()->get('cart');
+            }
+            return view('frontend/checkout', compact('user','cart'));
         } else {
             return view('frontend/myaccount');
         }
@@ -161,8 +164,6 @@ class CustomerInterfaceController extends Controller
     public function add_to_cart(Request $request)
     {
 
-
-
         if (strpos($request->category, 'Iphone') !== false) {
             if (isset($request->color) && isset($request->ram) && isset($request->capacity)) {
                 // return response()->json(['info' => 'bycate']);
@@ -174,14 +175,11 @@ class CustomerInterfaceController extends Controller
                     ->get();
                 if (count($products) == 0) {
                     return response()->json(['info' => 'san pham dang het hang']);
-                }
-                else{
+                } else {
                     $product = $products->first();
                 }
-
             } else {
                 $product = Product::find($request->id);
-
             }
         } elseif (strpos($request->category, 'MacBook') !== false) {
             $product = MacBook::find($request->id);
@@ -212,12 +210,23 @@ class CustomerInterfaceController extends Controller
         //luu lai bien session
         $request->session()->put('cart', $cart);
         return response()->json(['info' => 'Add To Cart Successful !']);
-
     }
 
 
+    public function update_cart(Request $request)
+    {
+        $quantity = $request->qty;
+        if ($request->session()->has('cart')) {
+            $cart = $request->session()->get('cart');
+            foreach($cart as $index => $item){
+                $item->quantity = $quantity[$index];
+            }
+            $request->session()->put('cart', $cart);
+            $cart = $request->session()->get('cart');
+            return view('frontend/cart', compact('cart'));
+        }
+    }
 
-    
 
 
     public function remove_cart(Request $request, $index)
@@ -231,6 +240,10 @@ class CustomerInterfaceController extends Controller
     }
 
 
+
+
+
+
     public function view_cart(Request $request)
     {
         dd($request->session()->get('cart'));
@@ -240,6 +253,4 @@ class CustomerInterfaceController extends Controller
     {
         $request->session()->forget('cart');
     }
-
-   
 }

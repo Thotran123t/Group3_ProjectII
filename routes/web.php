@@ -79,7 +79,8 @@ Route::prefix('frontend')->group(function(){
     Route::get('category_detail/{cateid}/{catename}', [CustomerInterfaceController::class, 'category_detail'])->name('category_detail');
 
     Route::post('add_to_cart', [CustomerInterfaceController::class,'add_to_cart'])->name('add_to_cart');
-    Route::delete('remove_cart/{index}', [CustomerInterfaceController::class,'remove_cart'])->name('remove_cart');
+    Route::post('update_cart', [CustomerInterfaceController::class,'update_cart'])->name('update_cart');
+    Route::post('remove_cart/{index}', [CustomerInterfaceController::class,'remove_cart'])->name('remove_cart');
 
 
     Route::get('delete_cart', [CustomerInterfaceController::class,'delete_cart'])->name('delete_cart');
